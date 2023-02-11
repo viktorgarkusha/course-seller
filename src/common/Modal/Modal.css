@@ -1,0 +1,11 @@
+.modalOverlay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background:#282c34;
+}
+
+.bottom{
+
+}
