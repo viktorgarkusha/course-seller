@@ -1,3 +1,5 @@
+import TCreateForm from './types/createForm';
+
 export const courses = [
 	{
 		name: 'Java',
@@ -30,5 +32,38 @@ export const courses = [
 		authors: ['Bob Jannet', 'Janey Markovisch'],
 		duration: '10 hours',
 		created: new Date().toString(),
+	},
+];
+
+export const createFormFields: TCreateForm[] = [
+	{
+		name: 'name',
+		label: 'Course name',
+		type: 'text',
+		placeHolder: 'Course name',
+	},
+	{
+		name: 'authors',
+		label: 'Authors',
+		type: 'text',
+		placeHolder: 'Mat Worren, Billy Pop',
+	},
+	{
+		name: 'duration',
+		label: 'Duration',
+		type: 'text',
+		placeHolder: '5h',
+	},
+	{
+		name: 'created',
+		label: 'Created',
+		type: 'date',
+		placeHolder: 'Creation date',
+	},
+	{
+		name: 'description',
+		label: 'Short Course Description',
+		type: 'textarea',
+		placeHolder: 'Short course description',
 	},
 ];

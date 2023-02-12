@@ -1,0 +1,25 @@
+.courseList{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .courseFlexContainer {
+    display: flex;
+    border: solid 1px #61dafb;
+    justify-content: space-between;
+    margin: 0;
+    padding: 20px;
+    margin-bottom: 40px;
+  }
+
+  
+.description {
+    flex-basis: 65%; 
+    min-width: 320px;
+  }
+
+  
+.information{
+    flex-basis: 30%;
+  }

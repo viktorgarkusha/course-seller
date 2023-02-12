@@ -19,51 +19,9 @@ code {
   border: blue;
 }
 
-.search-flex-container{
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 40px;
-  align-items: center;
-}
-
-.course-flex-container {
-  display: flex;
-  border: solid 1px #61dafb;
-  justify-content: space-between;
-  margin: 0;
-  padding: 20px;
-  margin-bottom: 40px;
-}
-
-.courseList{
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.description {
-  flex-basis: 65%; 
-  min-width: 320px;
-}
-
-.information{
-  flex-basis: 30%;
-}
-
-.header {
-  display: flex;
-  margin: 40px;
-  justify-content:  space-between;
-}
-
 .logo {
   width: 150px;
   height: 150px;
-}
-
-.greet {
-  margin: 60px;
-  padding: 0px;
 }
 
 #login {
@@ -84,6 +42,3 @@ code {
   color:#282c34;
 }
 
-.search{
-  height: 33px;
-}
