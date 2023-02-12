@@ -10,16 +10,20 @@ function App() {
 
 	const createCourseHandler = useCallback((course: TCourses) => {
 		setCourses((prevState) => {
-			console.log(prevState);
-			const result = [...prevState, course];
-			console.log('New courses are ' + result);
-			return result;
+			return [...prevState, course];
+		});
+	}, []);
+	const updateCourseHandler = useCallback((course: TCourses) => {
+		setCourses((prevState) => {
+			const index = prevState.findIndex((c) => c.name === course.name);
+			prevState[index] = course;
+			return prevState;
 		});
 	}, []);
 	return (
 		<Layout>
 			<Search onCreate={createCourseHandler} />
-			<Courses courses={courses} />
+			<Courses courses={courses} updateCourseHandler={updateCourseHandler} />
 		</Layout>
 	);
 }

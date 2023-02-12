@@ -10,11 +10,12 @@ export type SearchProps = {
 
 const Search = ({ onCreate }) => {
 	const [openModal, setOpenModal] = useState<boolean>(false);
+	const toggleModal = () => setOpenModal(!openModal);
 	function addNewCourse(course: TCourses) {
+		toggleModal();
 		onCreate(course);
 	}
 
-	const toggleModal = () => setOpenModal(!openModal);
 	return (
 		<div className='search-flex-container'>
 			<div>

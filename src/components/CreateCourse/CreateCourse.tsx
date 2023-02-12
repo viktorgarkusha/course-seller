@@ -5,6 +5,7 @@ import { TCourses } from 'src/types/course';
 export type TCreateCourse = {
 	closeHandler: () => void;
 	addNewCourse: (course: TCourses) => void;
+	course?: TCourses;
 };
 
 export type TCreateForm = {
@@ -47,14 +48,23 @@ const fields: TCreateForm[] = [
 	},
 ];
 
-const CreateCourse = ({ closeHandler, addNewCourse }: TCreateCourse) => {
-	const [inputs, setInputs] = useState<TCourses>({
-		name: '',
-		description: '',
-		authors: [],
-		duration: '',
-		created: '',
-	});
+const CreateCourse = ({
+	closeHandler,
+	addNewCourse,
+	course,
+}: TCreateCourse) => {
+	console.log('THIS IS COURSE' + course);
+	const [inputs, setInputs] = useState<TCourses>(
+		course === undefined
+			? {
+					name: '',
+					description: '',
+					authors: [],
+					duration: '',
+					created: '',
+			  }
+			: course
+	);
 
 	//const handleSubmit = () => {console.log("Hello)}
 	const handleChange = (event) => {
@@ -100,10 +110,10 @@ const CreateCourse = ({ closeHandler, addNewCourse }: TCreateCourse) => {
 				})}
 				<div className='btn-block'>
 					<button type='submit' onClick={() => addNewCourse(inputs)}>
-						Add
+						{course === undefined ? 'Add' : 'Update'}
 					</button>
 					<button className='bottom' onClick={closeHandler}>
-						Close
+						Cancel
 					</button>
 				</div>
 			</form>
