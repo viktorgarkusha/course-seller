@@ -4,6 +4,8 @@ import { TCourses } from 'src/types/course';
 import Modal from 'src/common/Modal/Modal';
 import CreateCourse from '../CreateCourse/CreateCourse';
 
+// TODO: please create file Search.css in the Search folder and move all styles for this component to the appropriate file
+
 export type SearchProps = {
 	onCreate: (course: TCourses) => void;
 };
@@ -18,6 +20,8 @@ const Search = ({ onCreate }) => {
 
 	return (
 		<div className='search-flex-container'>
+			{' '}
+			{/* TODO: rename classNames to camelCase style */}
 			<div>
 				<input className='search' type='search' name='name'></input>
 				<Button text='Search' />

@@ -9,6 +9,7 @@ export type TCreateCourse = {
 };
 
 export type TCreateForm = {
+	// TODO: Please move it top the types folder;
 	name: string;
 	type: string;
 	label: string;
@@ -16,6 +17,7 @@ export type TCreateForm = {
 };
 
 const fields: TCreateForm[] = [
+	// TODO: Please move it top the constants file;
 	{
 		name: 'name',
 		label: 'Course name',
@@ -53,9 +55,9 @@ const CreateCourse = ({
 	addNewCourse,
 	course,
 }: TCreateCourse) => {
-	console.log('THIS IS COURSE' + course);
+	console.log('THIS IS COURSE' + course); // TODO: Please remove every console.log;
 	const [inputs, setInputs] = useState<TCourses>(
-		course === undefined
+		course === undefined // TODO: you don't need checking  here;
 			? {
 					name: '',
 					description: '',
@@ -71,10 +73,10 @@ const CreateCourse = ({
 		const name = event.target.name;
 		let value = event.target.value;
 		if (name === 'authors') {
-			value = value.split(',');
+			value = value.split(','); // TODO: what if there is no comma??;
 		}
 		setInputs((values) => ({ ...values, [name]: value }));
-		console.log(inputs);
+		console.log(inputs); // TODO: Please remove every console.log;
 	};
 	return (
 		<div className='testbox'>
@@ -83,11 +85,12 @@ const CreateCourse = ({
 					<h1>Add New Course Form</h1>
 				</div>
 				{fields.map((f) => {
+					// TODO: please rename variable f to input or fieald or use destructuring;
 					return (
 						<div className='item'>
 							<p className='fieldName'>{f.label}</p>
 							{f.type !== 'textarea' && (
-								<input
+								<input // TODO: let's disscus on mondey;
 									type={f.type}
 									name={f.name}
 									value={inputs[f.name] || ''}
@@ -97,8 +100,8 @@ const CreateCourse = ({
 							)}
 							{f.type === 'date' && <i className='fas fa-calendar-alt'></i>}
 							{f.type === 'textarea' && (
-								<textarea
-									rows='3'
+								<textarea // TODO: let's disscus on mondey;
+									rows='3' // TODO: pay attention to TS errors (Type 'string' is not assignable to type 'number') 3 - should be a number rows={3};
 									name={f.name}
 									value={inputs[f.name] || ''}
 									placeholder={f.placeHolder}
@@ -110,9 +113,14 @@ const CreateCourse = ({
 				})}
 				<div className='btn-block'>
 					<button type='submit' onClick={() => addNewCourse(inputs)}>
-						{course === undefined ? 'Add' : 'Update'}
+						{' '}
+						{/* TODO: for what empty string */}
+						{/* TODO: please rename variable f to input or fieald or use destructuring; */}
+						{course === undefined ? 'Add' : 'Update'}{' '}
+						{/* you can avoid checking for an undefined value. course ? "Add": "Update" */}
 					</button>
 					<button className='bottom' onClick={closeHandler}>
+						{/* TODO:you already have Button component, what do you use the tag for???? */}
 						Cancel
 					</button>
 				</div>
