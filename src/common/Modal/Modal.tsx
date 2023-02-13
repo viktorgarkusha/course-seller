@@ -2,12 +2,16 @@ import React from 'react';
 import './Modal.css';
 
 export type TModalProps = {
-	children: React.ReactNode | React.ReactNode[];
-	oneClose?: () => void;
+	children?: React.ReactNode | React.ReactNode[];
+	onClose?: () => void;
 };
 
-const Modal = ({ children }) => {
-	return <div className='modalOverlay'>{children}</div>;
+const Modal = ({ children, onClose }) => {
+	return (
+		<div onClick={onClose} className='modalOverlay'>
+			<div onClick={(evt) => evt.stopPropagation()}>{children}</div>
+		</div>
+	);
 };
 
 export default React.memo(Modal);

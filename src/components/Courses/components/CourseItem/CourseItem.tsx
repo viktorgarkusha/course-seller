@@ -32,7 +32,7 @@ const CourseItem = ({ course }) => {
 				</p>
 				<Button text='Show course' onClick={toggle} />
 				{open && (
-					<Modal>
+					<Modal onClose={toggle}>
 						<CourseForm closeHandler={toggle} course={course} />
 					</Modal>
 				)}
