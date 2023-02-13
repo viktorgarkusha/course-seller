@@ -12,7 +12,7 @@ textarea {
 
 .formContainer {
     padding: 20px;
-    width: 600px;
+    width: 800px;
     border-radius: 6px;
     background: #fff;
     box-shadow: 0 0 8px #669999;
@@ -107,4 +107,34 @@ input[type="date"]::-webkit-inner-spin-button {
     text-align: center;
 }
 
+.authorContainer {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
 
+.authorInput {
+    width: 50%;
+}
+
+.authorContainer span,
+.authorContainer h2 {
+    color: #000;
+}
+
+.controls {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.controls .input {
+    flex-basis: 60%;
+    margin: 0;
+}
+
+.controls .input input {
+    margin: 0;
+    height: 23px;
+}

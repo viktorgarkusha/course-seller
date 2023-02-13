@@ -63,10 +63,4 @@ export const createFormFields: TCreateForm[] = [
 		type: 'text',
 		placeHolder: '5h',
 	},
-	{
-		name: 'created',
-		label: 'Created',
-		type: 'date',
-		placeHolder: 'Creation date',
-	},
 ];

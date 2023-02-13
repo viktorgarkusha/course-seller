@@ -13,7 +13,7 @@ function Courses({ courses }: TCoursesProps) {
 	return (
 		<ul className='courseList'>
 			{courses.map((course) => {
-				return <CourseItem course={course} />;
+				return <CourseItem key={course.id} course={course} />;
 			})}
 		</ul>
 	);

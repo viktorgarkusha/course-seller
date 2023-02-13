@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
-import { TCourses } from 'src/types/course';
+import { TAuthor, TCourses } from 'src/types/course';
 
 import Button from 'src/common/Button/Button';
 import Input from '../../common/Input/Input';
+import AuthorForm from './components/AuthorsForm';
 
 import { createFormFields } from '../../constants';
 
@@ -23,15 +24,32 @@ const CourseForm = ({ closeHandler, addNewCourse, course }: TCreateCourse) => {
 					title: '',
 					description: '',
 					duration: 1,
-					creationDate: '',
+					authors: [],
+					creationDate: new Date().toDateString(),
 			  }
 			: course
 	);
-	const handleChange = (event) => {
+	const handleChangeText = (event) => {
 		const name = event.target.name;
 		const value = event.target.value;
 		setInputs((values) => ({ ...values, [name]: value }));
 	};
+
+	const handleSaveAuthor = (author: TAuthor) => {
+		setInputs((values) => ({
+			...values,
+			authors: [...values.authors, author],
+		}));
+	};
+
+	const removeAuthor = (id: string) => {
+		const newAuthors = inputs.authors.filter((item) => item.id !== id);
+		setInputs((values) => ({
+			...values,
+			authors: newAuthors,
+		}));
+	};
+
 	return (
 		<form className='formContainer'>
 			<div className='banner'>
@@ -40,10 +58,20 @@ const CourseForm = ({ closeHandler, addNewCourse, course }: TCreateCourse) => {
 			{createFormFields.map((field) => {
 				return (
 					<div key={field.name} className='item'>
-						<Input course={inputs} field={field} onChangeText={handleChange} />
+						<Input
+							value={inputs[field?.name]}
+							field={field}
+							onChangeText={handleChangeText}
+						/>
 					</div>
 				);
 			})}
+
+			<AuthorForm
+				handleSaveAuthor={handleSaveAuthor}
+				removeAuthor={removeAuthor}
+				existAuthors={inputs.authors}
+			/>
 			<div className='btn-block'>
 				<Button
 					text={course ? 'Update Course' : 'Add Course'}

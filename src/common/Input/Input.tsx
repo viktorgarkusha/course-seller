@@ -1,19 +1,18 @@
 import React from 'react';
 
-import { getAuthorNames } from '../../helpers/getAuthorNames';
-
-import { TCourses } from 'src/types/course';
 import { TInputField } from './../../types/inputField';
 
+import './Input.css';
+
 export type TInputProps = {
-	course: TCourses;
+	value?: string;
 	field: TInputField;
 	onChangeText: (evet) => void;
 };
 
-const Input = ({ course, field, onChangeText }: TInputProps) => {
+const Input = ({ value = '', field, onChangeText }: TInputProps) => {
 	return (
-		<>
+		<div className='input'>
 			<label htmlFor={field.name} className='fieldName'>
 				{field.label}
 			</label>
@@ -22,7 +21,7 @@ const Input = ({ course, field, onChangeText }: TInputProps) => {
 					type={field.type}
 					id={field.name}
 					name={field.name}
-					value={course[field.name] || ''}
+					value={value || ''}
 					placeholder={field.placeHolder}
 					onChange={onChangeText}
 				/>
@@ -32,12 +31,12 @@ const Input = ({ course, field, onChangeText }: TInputProps) => {
 				<textarea
 					rows={3}
 					name={field.name}
-					value={course[field.name] || ''}
+					value={value}
 					placeholder={field.placeHolder}
 					onChange={onChangeText}
 				></textarea>
 			)}
-		</>
+		</div>
 	);
 };
 

@@ -15,7 +15,7 @@ export type TCourseItem = {
 const CourseItem = ({ course }) => {
 	const { open, toggle } = useToggle();
 	return (
-		<li key={course.id} className='itemWrapper'>
+		<li className='itemWrapper'>
 			<div className='courseItem'>
 				<div className='description'>
 					<h2>{course.title}</h2>
