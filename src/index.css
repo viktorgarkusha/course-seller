@@ -28,17 +28,3 @@ code {
   margin-left: 30px;
 }
 
-.btn {
-  border: none;
-  border-radius: 3px;
-  background-color: #61dafb;
-  color: #fff;
-  padding: 10px 20px;
-  font-size: 13px;
-  cursor: pointer;
-}
-
-.success {
-  color:#282c34;
-}
-

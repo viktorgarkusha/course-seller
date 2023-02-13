@@ -1,13 +1,20 @@
 
-.search{
-    height: 33px;
-  }
-
+.search {
+  height: 35px;
+  margin-bottom: 0;
+  margin-right: 10px;
+}
   
 .searchFlexContainer{
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 40px;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  align-items: center;
+}
+
+.searchBar {
+  width: 400px;
+  display: flex;
+  align-items: center;
+}
   

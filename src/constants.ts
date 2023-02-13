@@ -1,4 +1,4 @@
-import TCreateForm from './types/createForm';
+import { TCreateForm } from './types/createForm';
 
 export const mockedAuthorsList = [
 	{
@@ -52,6 +52,12 @@ export const createFormFields: TCreateForm[] = [
 		placeHolder: 'Course name',
 	},
 	{
+		name: 'description',
+		label: 'Short Course Description',
+		type: 'textarea',
+		placeHolder: 'Short course description',
+	},
+	{
 		name: 'duration',
 		label: 'Duration',
 		type: 'text',
@@ -62,11 +68,5 @@ export const createFormFields: TCreateForm[] = [
 		label: 'Created',
 		type: 'date',
 		placeHolder: 'Creation date',
-	},
-	{
-		name: 'description',
-		label: 'Short Course Description',
-		type: 'textarea',
-		placeHolder: 'Short course description',
 	},
 ];

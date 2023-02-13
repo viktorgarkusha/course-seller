@@ -14,10 +14,13 @@ export type TInputProps = {
 const Input = ({ course, field, onChangeText }: TInputProps) => {
 	return (
 		<>
-			<label className='fieldName'>{field.label}</label>
+			<label htmlFor={field.name} className='fieldName'>
+				{field.label}
+			</label>
 			{field.type !== 'textarea' && (
 				<input
 					type={field.type}
+					id={field.name}
 					name={field.name}
 					value={course[field.name] || ''}
 					placeholder={field.placeHolder}

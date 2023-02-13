@@ -15,27 +15,30 @@ export type TCourseItem = {
 const CourseItem = ({ course }) => {
 	const { open, toggle } = useToggle();
 	return (
-		<li key={course.id} className='courseFlexContainer'>
-			<div className='description'>
-				<h2>{course.title}</h2>
-				<p>{course.description}</p>
-			</div>
-			<div className='information'>
-				<p>
-					<strong>Authors</strong>:{getAuthorNames(course.authors)}
-				</p>
-				<p>
-					<strong>Duration</strong>: {course.duration}
-				</p>
-				<p>
-					<strong>Created</strong>: {course.creationDate}
-				</p>
-				<Button text='Show course' onClick={toggle} />
-				{open && (
-					<Modal onClose={toggle}>
-						<CourseForm closeHandler={toggle} course={course} />
-					</Modal>
-				)}
+		<li key={course.id} className='itemWrapper'>
+			<div className='courseItem'>
+				<div className='description'>
+					<h2>{course.title}</h2>
+					<p>{course.description}</p>
+				</div>
+				<div className='information'>
+					<p>
+						<strong className='subtitle'>Authors:</strong>
+						{getAuthorNames(course.authors)}
+					</p>
+					<p>
+						<strong className='subtitle'>Duration:</strong> {course.duration}
+					</p>
+					<p>
+						<strong className='subtitle'>Created:</strong> {course.creationDate}
+					</p>
+					<Button text='Show course' onClick={toggle} />
+					{open && (
+						<Modal onClose={toggle}>
+							<CourseForm closeHandler={toggle} course={course} />
+						</Modal>
+					)}
+				</div>
 			</div>
 		</li>
 	);

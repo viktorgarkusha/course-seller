@@ -1,10 +1,30 @@
 .header {
     display: flex;
-    margin: 40px;
+    align-items: center;
     justify-content: space-between;
+    margin-bottom: 30px;
 }
 
 .greet {
-    margin: 60px;
     padding: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.greet span {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 25px;
+}
+.logo {
+    animation: App-logo-spin infinite 20s linear;
+}
+
+@keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
 }

@@ -22,13 +22,13 @@ const Search = ({ onCreate }) => {
 
 	return (
 		<div className='searchFlexContainer'>
-			<div>
+			<div className='searchBar'>
 				<input className='search' type='search' name='name'></input>
 				<Button text='Search' />
 			</div>
 			<Button text='Add new course' onClick={toggle} />
 			{open && (
-				<Modal>
+				<Modal onClose={toggle}>
 					<CourseForm closeHandler={toggle} addNewCourse={addNewCourse} />
 				</Modal>
 			)}
