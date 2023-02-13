@@ -13,7 +13,7 @@ export type TCourseItem = {
 };
 
 const CourseItem = ({ course }) => {
-	const [open, toggle] = useToggle();
+	const { open, toggle } = useToggle();
 	return (
 		<li key={course.id} className='courseFlexContainer'>
 			<div className='description'>

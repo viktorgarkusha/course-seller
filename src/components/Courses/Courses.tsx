@@ -1,12 +1,7 @@
-import React, { useState } from 'react';
-
-import Button from './../../common/Button/Button';
-import CourseForm from '../CourseForm/CourseForm';
-import Modal from 'src/common/Modal/Modal';
+import React from 'react';
 import CourseItem from './components/CourseItem/CourseItem';
 
 import { TCourses } from '../../types/course';
-import { getAuthorNames } from '../../helpers/getAuthorNames';
 
 import './Courses.css';
 

@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
+
 import Button from 'src/common/Button/Button';
-import { TCourses } from 'src/types/course';
 import Modal from 'src/common/Modal/Modal';
 import CourseForm from '../CourseForm/CourseForm';
+
+import { TCourses } from 'src/types/course';
+import { useToggle } from 'src/hooks/useToggle';
+
 import './Search.css';
 
 export type SearchProps = {
@@ -10,10 +14,9 @@ export type SearchProps = {
 };
 
 const Search = ({ onCreate }) => {
-	const [openModal, setOpenModal] = useState<boolean>(false);
-	const toggleModal = () => setOpenModal(!openModal);
+	const { open, toggle } = useToggle();
 	function addNewCourse(course: TCourses) {
-		toggleModal();
+		toggle();
 		onCreate(course);
 	}
 
@@ -23,10 +26,10 @@ const Search = ({ onCreate }) => {
 				<input className='search' type='search' name='name'></input>
 				<Button text='Search' />
 			</div>
-			<Button text='Add new course' onClick={toggleModal} />
-			{openModal && (
+			<Button text='Add new course' onClick={toggle} />
+			{open && (
 				<Modal>
-					<CourseForm closeHandler={toggleModal} addNewCourse={addNewCourse} />
+					<CourseForm closeHandler={toggle} addNewCourse={addNewCourse} />
 				</Modal>
 			)}
 		</div>
