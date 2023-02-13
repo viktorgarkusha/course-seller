@@ -13,17 +13,10 @@ function App() {
 			return [...prevState, course];
 		});
 	}, []);
-	const updateCourseHandler = useCallback((course: TCourses) => {
-		setCourses((prevState) => {
-			const index = prevState.findIndex((c) => c.name === course.name);
-			prevState[index] = course;
-			return prevState;
-		});
-	}, []);
 	return (
 		<Layout>
 			<Search onCreate={createCourseHandler} />
-			<Courses courses={courses} updateCourseHandler={updateCourseHandler} />
+			<Courses courses={courses} />
 		</Layout>
 	);
 }

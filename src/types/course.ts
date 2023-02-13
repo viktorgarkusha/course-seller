@@ -1,7 +1,13 @@
 export type TCourses = {
-	name: string;
+	id: string;
+	title: string;
 	description: string;
-	authors: string[];
-	duration: string;
-	created: string;
+	creationDate: string;
+	duration: number;
+	authors?: TAuthor[];
+};
+
+export type TAuthor = {
+	id: string;
+	name: string;
 };

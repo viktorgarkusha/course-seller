@@ -1,21 +1,40 @@
+import React from 'react';
+
+import { getAuthorNames } from '../../helpers/getAuthorNames';
+
 import { TCourses } from 'src/types/course';
 import { TInputField } from './../../types/inputField';
 
 export type TInputProps = {
 	course: TCourses;
 	field: TInputField;
-	onChange: (evet) => void;
+	onChangeText: (evet) => void;
 };
 
-const Input = ({ course, field, onChange }: TInputProps) => {
+const Input = ({ course, field, onChangeText }: TInputProps) => {
 	return (
-		<input // TODO: let's disscus on mondey;
-			type={field.type}
-			name={field.name}
-			value={course[field.name] || ''}
-			placeholder={field.placeHolder}
-			onChange={onChange}
-		/>
+		<>
+			<label className='fieldName'>{field.label}</label>
+			{field.type !== 'textarea' && (
+				<input
+					type={field.type}
+					name={field.name}
+					value={course[field.name] || ''}
+					placeholder={field.placeHolder}
+					onChange={onChangeText}
+				/>
+			)}
+			{field.type === 'date' && <i className='fas fa-calendar-alt'></i>}
+			{field.type === 'textarea' && (
+				<textarea
+					rows={3}
+					name={field.name}
+					value={course[field.name] || ''}
+					placeholder={field.placeHolder}
+					onChange={onChangeText}
+				></textarea>
+			)}
+		</>
 	);
 };
 

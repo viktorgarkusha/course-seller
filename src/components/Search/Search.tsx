@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'src/common/Button/Button';
 import { TCourses } from 'src/types/course';
 import Modal from 'src/common/Modal/Modal';
-import CourseHandler from '../CourseHandler/CourseHandler';
+import CourseForm from '../CourseForm/CourseForm';
 import './Search.css';
 
 export type SearchProps = {
@@ -26,10 +26,7 @@ const Search = ({ onCreate }) => {
 			<Button text='Add new course' onClick={toggleModal} />
 			{openModal && (
 				<Modal>
-					<CourseHandler
-						closeHandler={toggleModal}
-						addNewCourse={addNewCourse}
-					/>
+					<CourseForm closeHandler={toggleModal} addNewCourse={addNewCourse} />
 				</Modal>
 			)}
 		</div>
