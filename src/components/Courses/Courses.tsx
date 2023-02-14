@@ -7,13 +7,20 @@ import './Courses.css';
 
 type TCoursesProps = {
 	courses: TCourses[];
+	updateCourseHandler: (course: TCourses) => void;
 };
 
-function Courses({ courses }: TCoursesProps) {
+function Courses({ courses, updateCourseHandler }: TCoursesProps) {
 	return (
 		<ul className='courseList'>
 			{courses.map((course) => {
-				return <CourseItem key={course.id} course={course} />;
+				return (
+					<CourseItem
+						key={course.id}
+						course={course}
+						updateCourseHandler={updateCourseHandler}
+					/>
+				);
 			})}
 		</ul>
 	);

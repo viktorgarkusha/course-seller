@@ -10,13 +10,14 @@ import { createFormFields } from '../../constants';
 
 import './CourseForm.css';
 
-export type TCreateCourse = {
+export type TCourseForm = {
 	closeHandler: () => void;
-	addNewCourse?: (course: TCourses) => void;
+	handleCourse: (course: TCourses) => void;
 	course?: TCourses;
 };
 
-const CourseForm = ({ closeHandler, addNewCourse, course }: TCreateCourse) => {
+const CourseForm = ({ closeHandler, handleCourse, course }: TCourseForm) => {
+	console.log(course);
 	const [inputs, setInputs] = useState<TCourses>(
 		!course
 			? {
@@ -30,16 +31,19 @@ const CourseForm = ({ closeHandler, addNewCourse, course }: TCreateCourse) => {
 			: course
 	);
 	const handleChangeText = (event) => {
+		console.log(event);
 		const name = event.target.name;
 		const value = event.target.value;
 		setInputs((values) => ({ ...values, [name]: value }));
 	};
 
 	const handleSaveAuthor = (author: TAuthor) => {
+		console.log(author);
 		setInputs((values) => ({
 			...values,
 			authors: [...values.authors, author],
 		}));
+		console.log(inputs);
 	};
 
 	const removeAuthor = (id: string) => {
@@ -75,7 +79,7 @@ const CourseForm = ({ closeHandler, addNewCourse, course }: TCreateCourse) => {
 			<div className='btn-block'>
 				<Button
 					text={course ? 'Update Course' : 'Add Course'}
-					onClick={() => addNewCourse(inputs)}
+					onClick={() => handleCourse(inputs)}
 				/>
 				<Button text='Cancel' onClick={closeHandler} />
 			</div>

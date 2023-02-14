@@ -10,10 +10,15 @@ import { getAuthorNames } from '../../../../helpers/getAuthorNames';
 
 export type TCourseItem = {
 	course: TCourses;
+	updateCourseHandler: (course: TCourses) => void;
 };
 
-const CourseItem = ({ course }) => {
+const CourseItem = ({ course, updateCourseHandler }) => {
 	const { open, toggle } = useToggle();
+	const updateCourse = (course: TCourses) => {
+		toggle();
+		updateCourseHandler(course);
+	};
 	return (
 		<li className='itemWrapper'>
 			<div className='courseItem'>
@@ -35,7 +40,11 @@ const CourseItem = ({ course }) => {
 					<Button text='Show course' onClick={toggle} />
 					{open && (
 						<Modal onClose={toggle}>
-							<CourseForm closeHandler={toggle} course={course} />
+							<CourseForm
+								closeHandler={toggle}
+								handleCourse={updateCourse}
+								course={course}
+							/>
 						</Modal>
 					)}
 				</div>

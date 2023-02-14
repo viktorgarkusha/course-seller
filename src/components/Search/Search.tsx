@@ -29,7 +29,7 @@ const Search = ({ onCreate }) => {
 			<Button text='Add new course' onClick={toggle} />
 			{open && (
 				<Modal onClose={toggle}>
-					<CourseForm closeHandler={toggle} addNewCourse={addNewCourse} />
+					<CourseForm closeHandler={toggle} handleCourse={addNewCourse} />
 				</Modal>
 			)}
 		</div>

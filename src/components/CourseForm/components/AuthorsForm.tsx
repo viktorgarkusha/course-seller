@@ -1,7 +1,12 @@
 import React, { useCallback, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 import Button from 'src/common/Button/Button';
 import Input from 'src/common/Input/Input';
+
 import { TAuthor } from 'src/types/course';
+
+import './AuthorForm.css';
 
 const input = {
 	name: 'author',
@@ -25,7 +30,8 @@ const AuthorForm = ({ handleSaveAuthor, existAuthors, removeAuthor }) => {
 	};
 
 	const addAuthor = useCallback(() => {
-		value.length && setAuthors((state) => [...state, { name: value, id: '1' }]);
+		value.length &&
+			setAuthors((state) => [...state, { name: value, id: uuidv4() }]);
 		setValue('');
 	}, [value]);
 
@@ -45,7 +51,7 @@ const AuthorForm = ({ handleSaveAuthor, existAuthors, removeAuthor }) => {
 					{authors.map(({ name, id }) => {
 						return (
 							<div key={id} className='controls'>
-								<span>{name}</span>
+								<span className='authorName'>{name}</span>
 								<Button
 									text='Add author'
 									onClick={() => handleSaveAuthor({ name, id })}
@@ -60,7 +66,7 @@ const AuthorForm = ({ handleSaveAuthor, existAuthors, removeAuthor }) => {
 					{existAuthors.map(({ name, id }) => {
 						return (
 							<div key={id} className='controls'>
-								<span>{name}</span>
+								<span className='authorName'>{name}</span>
 								<Button text='Delete author' onClick={() => removeAuthor(id)} />
 							</div>
 						);
