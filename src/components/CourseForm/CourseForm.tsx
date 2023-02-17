@@ -17,7 +17,6 @@ export type TCourseForm = {
 };
 
 const CourseForm = ({ closeHandler, handleCourse, course }: TCourseForm) => {
-	console.log(course);
 	const [inputs, setInputs] = useState<TCourses>(
 		!course
 			? {
@@ -31,19 +30,16 @@ const CourseForm = ({ closeHandler, handleCourse, course }: TCourseForm) => {
 			: course
 	);
 	const handleChangeText = (event) => {
-		console.log(event);
 		const name = event.target.name;
 		const value = event.target.value;
 		setInputs((values) => ({ ...values, [name]: value }));
 	};
 
 	const handleSaveAuthor = (author: TAuthor) => {
-		console.log(author);
 		setInputs((values) => ({
 			...values,
 			authors: [...values.authors, author],
 		}));
-		console.log(inputs);
 	};
 
 	const removeAuthor = (id: string) => {

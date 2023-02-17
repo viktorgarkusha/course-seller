@@ -35,6 +35,10 @@ const AuthorForm = ({ handleSaveAuthor, existAuthors, removeAuthor }) => {
 		setValue('');
 	}, [value]);
 
+	const isAuthorAddedToTheCourse = (id: string) => {
+		return existAuthors.find((a) => a.id === id) && true;
+	};
+
 	return (
 		<div className='authorContainer'>
 			<div className='authorInput'>
@@ -53,8 +57,12 @@ const AuthorForm = ({ handleSaveAuthor, existAuthors, removeAuthor }) => {
 							<div key={id} className='controls'>
 								<span className='authorName'>{name}</span>
 								<Button
-									text='Add author'
-									onClick={() => handleSaveAuthor({ name, id })}
+									text={isAuthorAddedToTheCourse(id) ? 'Added' : 'Add author'}
+									onClick={
+										isAuthorAddedToTheCourse(id)
+											? undefined
+											: () => handleSaveAuthor({ name, id })
+									}
 								/>
 							</div>
 						);

@@ -1,4 +1,5 @@
 import React from 'react';
+import dayjs from 'dayjs';
 
 import Button from '../../../../common/Button/Button';
 import CourseForm from '../../../CourseForm/CourseForm';
@@ -7,6 +8,7 @@ import Modal from '../../../../common/Modal/Modal';
 import { TCourses } from '../../../../types/course';
 import { useToggle } from '../../../../hooks/useToggle';
 import { getAuthorNames } from '../../../../helpers/getAuthorNames';
+import { getDurationString } from '../../../../helpers/getDuration';
 
 export type TCourseItem = {
 	course: TCourses;
@@ -32,10 +34,12 @@ const CourseItem = ({ course, updateCourseHandler }) => {
 						{getAuthorNames(course.authors)}
 					</p>
 					<p>
-						<strong className='subtitle'>Duration:</strong> {course.duration}
+						<strong className='subtitle'>Duration:</strong>
+						{getDurationString(course.duration)}
 					</p>
 					<p>
-						<strong className='subtitle'>Created:</strong> {course.creationDate}
+						<strong className='subtitle'>Created:</strong>{' '}
+						{dayjs(course.creationDate).format('DD.MM.YYYY')}
 					</p>
 					<Button text='Show course' onClick={toggle} />
 					{open && (
