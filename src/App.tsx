@@ -1,31 +1,13 @@
-import React, { useState, useCallback } from 'react';
-import Courses from './components/Courses/Courses';
-import Layout from './common/Layout/Layout';
-import Search from './components/Search/Search';
-import { TCourses } from './types/course';
-import { courses as data } from './constants';
+import React from 'react';
+import { RouterProvider } from 'react-router-dom';
+
+import router from './router';
+import { putValue } from './helpers/localStorageHelper';
+import { courses } from './constants';
 
 function App() {
-	const [courses, setCourses] = useState<TCourses[]>(data);
-
-	const createCourseHandler = useCallback((course: TCourses) => {
-		setCourses((prevState) => {
-			return [...prevState, course];
-		});
-	}, []);
-	const updateCourseHandler = useCallback((course: TCourses) => {
-		setCourses((prevState) => {
-			//const index = prevState.findIndex((c) => c.id === course.id);
-			const updated = prevState.map((c) => (c.id === course.id ? course : c));
-			return updated;
-		});
-	}, []);
-	return (
-		<Layout>
-			<Search onCreate={createCourseHandler} />
-			<Courses courses={courses} updateCourseHandler={updateCourseHandler} />
-		</Layout>
-	);
+	putValue('courses', JSON.stringify(courses));
+	return <RouterProvider router={router} />;
 }
 
 export default App;

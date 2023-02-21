@@ -4,11 +4,16 @@ import './Button.css';
 export type ButtonProps = {
 	text: string;
 	onClick?: () => void;
+	customClassName?: string;
 };
 
-function Button({ text, onClick }: ButtonProps) {
+function Button({ text, onClick, customClassName }: ButtonProps) {
 	return (
-		<button type='button' className='btn' onClick={onClick}>
+		<button
+			type='button'
+			className={customClassName ? customClassName + ' btn' : ' btn'}
+			onClick={onClick}
+		>
 			{text}
 		</button>
 	);

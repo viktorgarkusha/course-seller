@@ -2,13 +2,11 @@ import React from 'react';
 import dayjs from 'dayjs';
 
 import Button from '../../../../common/Button/Button';
-import CourseForm from '../../../CourseForm/CourseForm';
-import Modal from '../../../../common/Modal/Modal';
 
 import { TCourses } from '../../../../types/course';
-import { useToggle } from '../../../../hooks/useToggle';
 import { getAuthorNames } from '../../../../helpers/getAuthorNames';
 import { getDurationString } from '../../../../helpers/getDuration';
+import { useNavigate } from 'react-router-dom';
 
 export type TCourseItem = {
 	course: TCourses;
@@ -16,10 +14,10 @@ export type TCourseItem = {
 };
 
 const CourseItem = ({ course, updateCourseHandler }) => {
-	const { open, toggle } = useToggle();
-	const updateCourse = (course: TCourses) => {
-		toggle();
-		updateCourseHandler(course);
+	const navigate = useNavigate();
+
+	const showCourse = () => {
+		navigate(course.id, { state: course });
 	};
 	return (
 		<li className='itemWrapper'>
@@ -41,16 +39,7 @@ const CourseItem = ({ course, updateCourseHandler }) => {
 						<strong className='subtitle'>Created:</strong>{' '}
 						{dayjs(course.creationDate).format('DD.MM.YYYY')}
 					</p>
-					<Button text='Show course' onClick={toggle} />
-					{open && (
-						<Modal onClose={toggle}>
-							<CourseForm
-								closeHandler={toggle}
-								handleCourse={updateCourse}
-								course={course}
-							/>
-						</Modal>
-					)}
+					<Button text='Show course' onClick={showCourse} />
 				</div>
 			</div>
 		</li>
