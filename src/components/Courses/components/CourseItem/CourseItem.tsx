@@ -9,6 +9,7 @@ import { TCourses } from '../../../../types/course';
 import { useToggle } from '../../../../hooks/useToggle';
 import { getAuthorNames } from '../../../../helpers/getAuthorNames';
 import { getDurationString } from '../../../../helpers/getDuration';
+import { useNavigate } from 'react-router-dom';
 
 export type TCourseItem = {
 	course: TCourses;
@@ -16,10 +17,15 @@ export type TCourseItem = {
 };
 
 const CourseItem = ({ course, updateCourseHandler }) => {
+	const navigate = useNavigate();
 	const { open, toggle } = useToggle();
 	const updateCourse = (course: TCourses) => {
 		toggle();
 		updateCourseHandler(course);
+	};
+
+	const showCourse = () => {
+		navigate(course.id, { state: course });
 	};
 	return (
 		<li className='itemWrapper'>
@@ -41,8 +47,8 @@ const CourseItem = ({ course, updateCourseHandler }) => {
 						<strong className='subtitle'>Created:</strong>{' '}
 						{dayjs(course.creationDate).format('DD.MM.YYYY')}
 					</p>
-					<Button text='Show course' onClick={toggle} />
-					{open && (
+					<Button text='Show course' onClick={showCourse} />
+					{/* {open && (
 						<Modal onClose={toggle}>
 							<CourseForm
 								closeHandler={toggle}
@@ -50,7 +56,7 @@ const CourseItem = ({ course, updateCourseHandler }) => {
 								course={course}
 							/>
 						</Modal>
-					)}
+					)} */}
 				</div>
 			</div>
 		</li>

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-import axios, { isCancel, AxiosError } from 'axios';
 import courseApi from '../../webClient';
 
 import '../../common/css/Common.css';
+import { TInputField } from 'src/types/inputField';
+import Input from 'src/common/Input/Input';
 
 export type TUserRequest = {
 	name: string;
@@ -28,30 +29,33 @@ const Registration = () => {
 
 	const createUser = (event) => {
 		event.preventDefault();
-		// axios
-		// 	.post('http://localhost:4000/register', JSON.stringify(data), {
-		// 		headers: { 'Content-Type': 'application/json' },
-		// 	})
-		// 	.then(function (response) {
-		// 		response.status === 201 ? navigate('/login') : '';
-		// 	})
-		// 	.catch(function (error) {
-		// 		console.log(error);
-		// 	})
-		// 	.finally(function () {
-		// 		console.log('Final block 1');
-		// 	});
 		courseApi
 			.post('/register', JSON.stringify(data))
 			.then(function (response) {
-				response.status === 201 ? navigate('/login') : '';
+				navigate('/login');
 			})
 			.catch(function (error) {
-				console.log(error);
-			})
-			.finally(function () {
-				console.log('Final block 1');
+				// TODO add hanfler
 			});
+	};
+
+	const nameFieldSetup: TInputField = {
+		name: 'name',
+		label: 'Name',
+		type: 'text',
+		placeHolder: '',
+	};
+	const emailFieldSetup: TInputField = {
+		name: 'email',
+		label: 'Email',
+		type: 'email',
+		placeHolder: '',
+	};
+	const passwordFieldSetup: TInputField = {
+		name: 'password',
+		label: 'Password',
+		type: 'password',
+		placeHolder: '',
 	};
 
 	return (
@@ -61,30 +65,27 @@ const Registration = () => {
 			</div>
 			<div className='flex-items'>
 				<form onSubmit={createUser} method='post'>
-					<label className='formFieldName'>Name</label>
-					<input
-						className='field'
-						name='name'
-						type='text'
-						value={data ? data.name : ''}
-						onChange={handleUpdate}
-					></input>
-					<label className='formFieldName'>Email</label>
-					<input
-						className='field'
-						name='email'
-						type='text'
-						value={data ? data.email : ''}
-						onChange={handleUpdate}
-					></input>
-					<label className='formFieldName'>Password</label>
-					<input
-						className='field'
-						name='password'
-						type='password'
-						value={data ? data.password : ''}
-						onChange={handleUpdate}
-					></input>
+					<Input
+						value={data.name}
+						field={nameFieldSetup}
+						onChangeText={handleUpdate}
+						customLabelClass='formFieldName'
+						customInputClass='field'
+					/>
+					<Input
+						value={data.email}
+						field={emailFieldSetup}
+						onChangeText={handleUpdate}
+						customLabelClass='formFieldName'
+						customInputClass='field'
+					/>
+					<Input
+						value={data.password}
+						field={passwordFieldSetup}
+						onChangeText={handleUpdate}
+						customLabelClass='formFieldName'
+						customInputClass='field'
+					/>
 					<div className='field'>
 						<input
 							className='flex-submit'
@@ -92,12 +93,11 @@ const Registration = () => {
 							value='Register'
 						></input>
 					</div>
-
-					{/* <div className='flex-button'>
-						<Button text='Login' customClassName='custom' />
-					</div> */}
 					<div className='flex-items'>
-						If you not have an account you can <Link to='/login'>Login</Link>
+						If you not have an account you can &nbsp;
+						<NavLink className='customLink' to='/login'>
+							Login
+						</NavLink>
 					</div>
 				</form>
 			</div>

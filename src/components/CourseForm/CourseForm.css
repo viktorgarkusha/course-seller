@@ -9,6 +9,10 @@ textarea {
     min-height: 100px;
     text-align: left;
 }
+.formWrapper{
+    display: flex;
+    justify-content: center;
+}
 
 .formContainer {
     padding: 20px;

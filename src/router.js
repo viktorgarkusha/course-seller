@@ -11,6 +11,7 @@ import Layout from './common/Layout/Layout';
 import CourseContainer from './CourseContainer';
 import ProtectedRoute from './common/ProtectedRoute/ProtectedRoute';
 import CourseForm from './components/CourseForm/CourseForm';
+import CourseInfo from './components/CourseInfo/CourseInfo';
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -20,8 +21,8 @@ const router = createBrowserRouter(
 			<Route path='registration' element={<Registration />} />
 			<Route element={<ProtectedRoute />}>
 				<Route path='courses' element={<CourseContainer />} />
-				<Route path='courses/add' element={<p>This works</p>} />
-				<Route path='courses/:id' element={<CourseForm />} />
+				<Route path='courses/add' element={<CourseForm />} />
+				<Route path='courses/:courseId' element={<CourseInfo />} />
 			</Route>
 		</Route>
 	)

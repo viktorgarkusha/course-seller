@@ -1,13 +1,15 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import localStorage from '../../helpers/localStorageHelper';
+
+import { getValue } from '../../helpers/localStorageHelper';
+import { USER_INFO_KEY } from '../../constants';
 
 export type TProtectedRoute = {
 	redirectUrl?: string;
 };
 
 const ProtectedRoute = ({ redirectUrl = '/login' }: TProtectedRoute) => {
-	const isLoggedIn = localStorage('userInfo');
+	const isLoggedIn = getValue(USER_INFO_KEY);
 	if (!isLoggedIn) {
 		return <Navigate to={redirectUrl} replace />;
 	}

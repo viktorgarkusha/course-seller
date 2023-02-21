@@ -64,3 +64,8 @@ export const createFormFields: TCreateForm[] = [
 		placeHolder: '5h',
 	},
 ];
+
+const USER_INFO_KEY = 'userInfo';
+const COURSES_KEY = 'courses';
+
+export { USER_INFO_KEY, COURSES_KEY };

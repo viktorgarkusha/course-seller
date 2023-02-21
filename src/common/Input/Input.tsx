@@ -8,12 +8,23 @@ export type TInputProps = {
 	value?: string;
 	field: TInputField;
 	onChangeText: (evet) => void;
+	customLabelClass?: string;
+	customInputClass?: string;
 };
 
-const Input = ({ value = '', field, onChangeText }: TInputProps) => {
+const Input = ({
+	value = '',
+	field,
+	onChangeText,
+	customLabelClass,
+	customInputClass,
+}: TInputProps) => {
 	return (
 		<div className='input'>
-			<label htmlFor={field.name} className='fieldName'>
+			<label
+				htmlFor={field.name}
+				className={customLabelClass ? customLabelClass : 'fieldName'}
+			>
 				{field.label}
 			</label>
 			{field.type !== 'textarea' && (
@@ -24,6 +35,7 @@ const Input = ({ value = '', field, onChangeText }: TInputProps) => {
 					value={value || ''}
 					placeholder={field.placeHolder}
 					onChange={onChangeText}
+					className={customInputClass ? customInputClass : ''}
 				/>
 			)}
 			{field.type === 'date' && <i className='fas fa-calendar-alt'></i>}
