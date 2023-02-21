@@ -13,6 +13,27 @@ export type TUserRequest = {
 	password: string;
 };
 
+const fields: TInputField[] = [
+	{
+		name: 'name',
+		label: 'Name',
+		type: 'text',
+		placeHolder: '',
+	},
+	{
+		name: 'email',
+		label: 'Email',
+		type: 'email',
+		placeHolder: '',
+	},
+	{
+		name: 'password',
+		label: 'Password',
+		type: 'password',
+		placeHolder: '',
+	},
+];
+
 const Registration = () => {
 	const navigate = useNavigate();
 	const [data, setData] = useState<TUserRequest>({
@@ -31,31 +52,12 @@ const Registration = () => {
 		event.preventDefault();
 		courseApi
 			.post('/register', JSON.stringify(data))
-			.then(function (response) {
+			.then(function () {
 				navigate('/login');
 			})
 			.catch(function (error) {
 				// TODO add hanfler
 			});
-	};
-
-	const nameFieldSetup: TInputField = {
-		name: 'name',
-		label: 'Name',
-		type: 'text',
-		placeHolder: '',
-	};
-	const emailFieldSetup: TInputField = {
-		name: 'email',
-		label: 'Email',
-		type: 'email',
-		placeHolder: '',
-	};
-	const passwordFieldSetup: TInputField = {
-		name: 'password',
-		label: 'Password',
-		type: 'password',
-		placeHolder: '',
 	};
 
 	return (
@@ -65,27 +67,17 @@ const Registration = () => {
 			</div>
 			<div className='flex-items'>
 				<form onSubmit={createUser} method='post'>
-					<Input
-						value={data.name}
-						field={nameFieldSetup}
-						onChangeText={handleUpdate}
-						customLabelClass='formFieldName'
-						customInputClass='field'
-					/>
-					<Input
-						value={data.email}
-						field={emailFieldSetup}
-						onChangeText={handleUpdate}
-						customLabelClass='formFieldName'
-						customInputClass='field'
-					/>
-					<Input
-						value={data.password}
-						field={passwordFieldSetup}
-						onChangeText={handleUpdate}
-						customLabelClass='formFieldName'
-						customInputClass='field'
-					/>
+					{fields.map((field) => {
+						return (
+							<Input
+								value={data[field.name]}
+								field={field}
+								onChangeText={handleUpdate}
+								customLabelClass='formFieldName'
+								customInputClass='field'
+							/>
+						);
+					})}
 					<div className='field'>
 						<input
 							className='flex-submit'

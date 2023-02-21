@@ -8,6 +8,21 @@ import '../../common/css/Common.css';
 import Input from 'src/common/Input/Input';
 import { TInputField } from 'src/types/inputField';
 
+const fields: TInputField[] = [
+	{
+		name: 'email',
+		label: 'Email',
+		type: 'email',
+		placeHolder: '',
+	},
+	{
+		name: 'password',
+		label: 'Password',
+		type: 'password',
+		placeHolder: '',
+	},
+];
+
 const Login = () => {
 	const navigate = useNavigate();
 	const [data, setData] = useState<TUserRequest>({
@@ -26,24 +41,12 @@ const Login = () => {
 		event.preventDefault();
 		courseApi
 			.post('/login', JSON.stringify(data))
-			.then(function (response) {
+			.then(function () {
 				navigate('/courses');
 			})
 			.catch(function (error) {
 				// TODO add hanfler
 			});
-	};
-	const emailFieldSetup: TInputField = {
-		name: 'email',
-		label: 'Email',
-		type: 'email',
-		placeHolder: '',
-	};
-	const passwordFieldSetup: TInputField = {
-		name: 'password',
-		label: 'Password',
-		type: 'password',
-		placeHolder: '',
 	};
 
 	return (
@@ -53,20 +56,17 @@ const Login = () => {
 			</div>
 			<div className='flex-items'>
 				<form onSubmit={loginUser}>
-					<Input
-						value={data.email}
-						field={emailFieldSetup}
-						onChangeText={handleUpdate}
-						customLabelClass='formFieldName'
-						customInputClass='field'
-					/>
-					<Input
-						value={data.password}
-						field={passwordFieldSetup}
-						onChangeText={handleUpdate}
-						customLabelClass='formFieldName'
-						customInputClass='field'
-					/>
+					{fields.map((field) => {
+						return (
+							<Input
+								value={data[field.name]}
+								field={field}
+								onChangeText={handleUpdate}
+								customLabelClass='formFieldName'
+								customInputClass='field'
+							/>
+						);
+					})}
 					<div className='field'>
 						<input className='flex-submit' type='submit' value='Login'></input>
 					</div>

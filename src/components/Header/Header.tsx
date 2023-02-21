@@ -20,14 +20,10 @@ function Header() {
 		<header className='header'>
 			<Logo />
 			<div className='greet'>
-				{userInfo ? (
+				{userInfo && (
 					<>
 						<span>{userInfo.name}</span>
 						<Button text='Logout' onClick={logout} />
-					</>
-				) : (
-					<>
-						<Button text='Login' />
 					</>
 				)}
 			</div>

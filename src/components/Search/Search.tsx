@@ -3,7 +3,6 @@ import React from 'react';
 import Button from 'src/common/Button/Button';
 
 import { TCourses } from 'src/types/course';
-import { useToggle } from 'src/hooks/useToggle';
 
 import './Search.css';
 import { useNavigate } from 'react-router-dom';

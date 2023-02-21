@@ -3,8 +3,6 @@ import dayjs from 'dayjs';
 
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 
-import Button from '../../common/Button/Button';
-
 import { TCourses } from '../../types/course';
 import { getAuthorNames } from 'src/helpers/getAuthorNames';
 import { getDurationString } from 'src/helpers/getDuration';
@@ -21,9 +19,6 @@ const CourseInfo = ({ course, updateCourseHandler }) => {
 	const location = useLocation();
 	course = location.state;
 
-	const showCourse = () => {
-		navigate(course.id, { state: course });
-	};
 	return (
 		<>
 			<Link className='customLink' to='/courses'>

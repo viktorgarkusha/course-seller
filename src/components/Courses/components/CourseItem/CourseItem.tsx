@@ -2,11 +2,8 @@ import React from 'react';
 import dayjs from 'dayjs';
 
 import Button from '../../../../common/Button/Button';
-import CourseForm from '../../../CourseForm/CourseForm';
-import Modal from '../../../../common/Modal/Modal';
 
 import { TCourses } from '../../../../types/course';
-import { useToggle } from '../../../../hooks/useToggle';
 import { getAuthorNames } from '../../../../helpers/getAuthorNames';
 import { getDurationString } from '../../../../helpers/getDuration';
 import { useNavigate } from 'react-router-dom';
@@ -18,11 +15,6 @@ export type TCourseItem = {
 
 const CourseItem = ({ course, updateCourseHandler }) => {
 	const navigate = useNavigate();
-	const { open, toggle } = useToggle();
-	const updateCourse = (course: TCourses) => {
-		toggle();
-		updateCourseHandler(course);
-	};
 
 	const showCourse = () => {
 		navigate(course.id, { state: course });
@@ -48,15 +40,6 @@ const CourseItem = ({ course, updateCourseHandler }) => {
 						{dayjs(course.creationDate).format('DD.MM.YYYY')}
 					</p>
 					<Button text='Show course' onClick={showCourse} />
-					{/* {open && (
-						<Modal onClose={toggle}>
-							<CourseForm
-								closeHandler={toggle}
-								handleCourse={updateCourse}
-								course={course}
-							/>
-						</Modal>
-					)} */}
 				</div>
 			</div>
 		</li>
