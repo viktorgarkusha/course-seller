@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useAppDispatch } from '../../store/hooks/hooks';
 import CourseItem from './components/CourseItem/CourseItem';
 
 import { TCourses } from '../../types/course';
+import { fetchAllCourses } from '../../store/thunks/coursesThunk';
+import { fetchAllAuthors } from '../../store/thunks/authorsThunk';
 
 import './Courses.css';
 

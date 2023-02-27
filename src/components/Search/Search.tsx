@@ -1,17 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Button from 'src/common/Button/Button';
 
-import { TCourses } from 'src/types/course';
-
 import './Search.css';
-import { useNavigate } from 'react-router-dom';
 
-export type SearchProps = {
-	onCreate?: (course: TCourses) => void;
-};
-
-const Search = ({ onCreate }) => {
+const Search = () => {
 	const navigate = useNavigate();
 	function addNewCourse() {
 		navigate('add');

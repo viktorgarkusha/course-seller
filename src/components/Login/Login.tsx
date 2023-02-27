@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import { TUserRequest } from '../Registration/Registration';
 import courseApi from '../../webClient';
 
-import '../../common/css/Common.css';
 import Input from 'src/common/Input/Input';
 import { TInputField } from 'src/types/inputField';
+
+import '../../common/css/Common.css';
 
 const fields: TInputField[] = [
 	{
@@ -41,7 +42,7 @@ const Login = () => {
 		event.preventDefault();
 		courseApi
 			.post('/login', JSON.stringify(data))
-			.then(function () {
+			.then(() => {
 				navigate('/courses');
 			})
 			.catch(function (error) {

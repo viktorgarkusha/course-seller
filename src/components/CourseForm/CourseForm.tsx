@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { v4 } from 'uuid';
 
 import { TAuthor, TCourses } from 'src/types/course';
 
@@ -7,10 +8,11 @@ import Input from '../../common/Input/Input';
 import AuthorForm from './components/AuthorsForm';
 
 import { createFormFields } from '../../constants';
+import { addCourse } from '../../store/slices/courseSlice';
 
 import './CourseForm.css';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { getValue, putValue } from 'src/helpers/localStorageHelper';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from 'src/store/hooks/hooks';
 
 export type TCourseForm = {
 	closeHandler: () => void;
@@ -19,6 +21,7 @@ export type TCourseForm = {
 
 const CourseForm = ({ closeHandler, handleCourse }: TCourseForm) => {
 	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
 	const [inputs, setInputs] = useState<TCourses>({
 		id: '',
 		title: '',
@@ -33,14 +36,14 @@ const CourseForm = ({ closeHandler, handleCourse }: TCourseForm) => {
 		setInputs((values) => ({ ...values, [name]: value }));
 	};
 
-	const handleSaveAuthor = (author: TAuthor) => {
+	const addAuthorToTheCourse = (author: TAuthor) => {
 		setInputs((values) => ({
 			...values,
 			authors: [...values.authors, author],
 		}));
 	};
 
-	const removeAuthor = (id: string) => {
+	const removeAuthorFromTheCourse = (id: string) => {
 		const newAuthors = inputs.authors.filter((item) => item.id !== id);
 		setInputs((values) => ({
 			...values,
@@ -49,9 +52,16 @@ const CourseForm = ({ closeHandler, handleCourse }: TCourseForm) => {
 	};
 
 	const saveCourse = () => {
-		const courses = JSON.parse(getValue('courses'));
-		courses.push(inputs);
-		putValue('courses', JSON.stringify(courses));
+		dispatch(
+			addCourse({
+				id: v4(),
+				title: inputs.title,
+				description: inputs.description,
+				duration: inputs.duration,
+				authors: inputs.authors,
+				creationDate: new Date().toDateString(),
+			})
+		);
 		navigate('/courses');
 	};
 
@@ -74,8 +84,8 @@ const CourseForm = ({ closeHandler, handleCourse }: TCourseForm) => {
 				})}
 
 				<AuthorForm
-					handleSaveAuthor={handleSaveAuthor}
-					removeAuthor={removeAuthor}
+					handleSaveAuthor={addAuthorToTheCourse}
+					removeAuthor={removeAuthorFromTheCourse}
 					existAuthors={inputs.authors}
 				/>
 				<div className='btn-block'>
