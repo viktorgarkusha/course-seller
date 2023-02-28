@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 
 import { TAuthor, TCourses } from 'src/types/course';
@@ -9,10 +10,9 @@ import AuthorForm from './components/AuthorsForm';
 
 import { createFormFields } from '../../constants';
 import { addCourse } from '../../store/slices/courseSlice';
+import { useAppDispatch } from 'src/store/hooks/hooks';
 
 import './CourseForm.css';
-import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from 'src/store/hooks/hooks';
 
 const CourseForm = () => {
 	const navigate = useNavigate();

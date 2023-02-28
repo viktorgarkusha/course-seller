@@ -41,7 +41,7 @@
   align-items: flex-start;
 }
 
-.deleteButton {
+.imageButton {
   border: 1px;
   width: 40px;
   margin-left: 5px;
@@ -49,6 +49,6 @@
   height: 25px;
 }
 
-.deleteButton:hover {
+.imageButton:hover {
   background: #21a4d3;
 }

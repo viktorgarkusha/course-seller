@@ -1,4 +1,4 @@
-import { createSlice, CaseReducer, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import { TAuthor } from '../../types/course';
 import { fetchAllAuthors } from '../thunks/authorsThunk';

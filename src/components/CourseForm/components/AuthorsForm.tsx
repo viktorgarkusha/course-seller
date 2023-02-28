@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from 'src/store/hooks/hooks';
 import { addAuthor } from 'src/store/slices/authorSlice';
 
 import './AuthorForm.css';
+import { selectAuthors } from 'src/store/selectors/selectors';
 
 const input = {
 	name: 'author',
@@ -27,7 +28,7 @@ export type TAuthorForm = {
 const AuthorForm = ({ handleSaveAuthor, existAuthors, removeAuthor }) => {
 	const [value, setValue] = useState<string>('');
 	const dispatch = useAppDispatch();
-	const authors = useAppSelector((state) => state.authors.authors);
+	const authors = useAppSelector(selectAuthors);
 
 	const handleChange = (event) => {
 		setValue(event.target.value);

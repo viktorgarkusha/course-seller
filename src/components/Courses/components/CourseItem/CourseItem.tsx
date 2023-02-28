@@ -49,9 +49,14 @@ const CourseItem = ({ course, updateCourseHandler }) => {
 					</p>
 					<div className='buttonBlock'>
 						<Button text='Show course' onClick={showCourse} />
-						<input className='deleteButton' type='image' src={editButton} />
 						<input
-							className='deleteButton'
+							className='imageButton'
+							type='image'
+							src={editButton}
+							onClick={updateCourseHandler}
+						/>
+						<input
+							className='imageButton'
 							type='image'
 							src={deleteButton}
 							onClick={removeCourse}

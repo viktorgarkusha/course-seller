@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 import { useAppSelector } from 'src/store/hooks/hooks';
 import { selectUser } from 'src/store/selectors/selectors';
-import { updateUserInStore } from '../../helpers/userService';
+import { useUpdateUserInStore } from '../../helpers/userService';
 
 export type TProtectedRoute = {
 	redirectUrl?: string;
@@ -11,7 +11,7 @@ export type TProtectedRoute = {
 
 const ProtectedRoute = ({ redirectUrl = '/login' }: TProtectedRoute) => {
 	const user = useAppSelector(selectUser);
-	updateUserInStore();
+	useUpdateUserInStore();
 	if (!user.isAuth) {
 		return <Navigate to={redirectUrl} replace />;
 	}
