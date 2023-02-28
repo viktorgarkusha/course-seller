@@ -14,12 +14,7 @@ import './CourseForm.css';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from 'src/store/hooks/hooks';
 
-export type TCourseForm = {
-	closeHandler: () => void;
-	handleCourse: (course: TCourses) => void;
-};
-
-const CourseForm = ({ closeHandler, handleCourse }: TCourseForm) => {
+const CourseForm = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const [inputs, setInputs] = useState<TCourses>({
@@ -90,7 +85,7 @@ const CourseForm = ({ closeHandler, handleCourse }: TCourseForm) => {
 				/>
 				<div className='btn-block'>
 					<Button text='Add Course' onClick={saveCourse} />
-					<Button text='Cancel' onClick={closeHandler} />
+					<Button text='Cancel' onClick={() => navigate('/courses')} />
 				</div>
 			</form>
 		</div>

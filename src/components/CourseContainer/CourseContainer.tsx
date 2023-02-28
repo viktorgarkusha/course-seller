@@ -8,17 +8,11 @@ import { TCourses } from '../../types/course';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
 import { updateCourse } from '../../store/slices/courseSlice';
 import { selectUser, selectCourses } from '../../store/selectors/selectors';
-import { fetchAllCourses } from '../../store/thunks/coursesThunk';
-import { fetchAllAuthors } from '../../store/thunks/authorsThunk';
 
 function CourseContainer() {
 	const user = useAppSelector(selectUser);
 	const courses = useAppSelector(selectCourses);
 	const dispatch = useAppDispatch();
-	useEffect(() => {
-		dispatch(fetchAllCourses());
-		dispatch(fetchAllAuthors());
-	}, []);
 
 	const updateCourseHandler = useCallback((course: TCourses) => {
 		dispatch(updateCourse(course));

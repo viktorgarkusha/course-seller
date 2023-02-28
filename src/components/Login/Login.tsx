@@ -8,6 +8,7 @@ import Input from 'src/common/Input/Input';
 import { TInputField } from 'src/types/inputField';
 
 import '../../common/css/Common.css';
+import { login } from 'src/services';
 
 const fields: TInputField[] = [
 	{
@@ -40,14 +41,9 @@ const Login = () => {
 
 	const loginUser = (event) => {
 		event.preventDefault();
-		courseApi
-			.post('/login', JSON.stringify(data))
-			.then(() => {
-				navigate('/courses');
-			})
-			.catch(function (error) {
-				// TODO add hanfler
-			});
+		login(data).then(() => {
+			navigate('/courses');
+		});
 	};
 
 	return (

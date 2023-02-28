@@ -6,6 +6,7 @@ import courseApi from '../../webClient';
 import '../../common/css/Common.css';
 import { TInputField } from 'src/types/inputField';
 import Input from 'src/common/Input/Input';
+import { register } from 'src/services';
 
 export type TUserRequest = {
 	name: string;
@@ -50,14 +51,17 @@ const Registration = () => {
 
 	const createUser = (event) => {
 		event.preventDefault();
-		courseApi
-			.post('/register', JSON.stringify(data))
-			.then(function () {
-				navigate('/login');
-			})
-			.catch(function (error) {
-				// TODO add hanfler
-			});
+		register(data).then(function () {
+			navigate('/login');
+		});
+		// courseApi
+		// 	.post('/register', JSON.stringify(data))
+		// 	.then(function () {
+		// 		navigate('/login');
+		// 	})
+		// 	.catch(function (error) {
+		// 		// TODO add hanfler
+		// 	});
 	};
 
 	return (
