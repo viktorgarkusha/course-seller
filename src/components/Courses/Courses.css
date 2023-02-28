@@ -1,4 +1,4 @@
-.courseList{
+.courseList {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -19,15 +19,36 @@
 }
 
 .description {
-  flex-basis: 65%; 
+  flex-basis: 65%;
   min-width: 320px;
 }
 
-.information{
+.information {
   flex-basis: 30%;
 }
 
 .subtitle {
   display: inline-block;
   margin-right: 20px;
+}
+
+.buttonBlock {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* align-content: stretch; */
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.imageButton {
+  border: 1px;
+  width: 40px;
+  margin-left: 5px;
+  background: #61dafb;
+  height: 25px;
+}
+
+.imageButton:hover {
+  background: #21a4d3;
 }

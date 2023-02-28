@@ -1,23 +1,16 @@
 import React from 'react';
 import dayjs from 'dayjs';
 
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
-import { TCourses } from '../../types/course';
 import { getAuthorNames } from 'src/helpers/getAuthorNames';
 import { getDurationString } from 'src/helpers/getDuration';
 
 import './CourseInfo.css';
 
-export type TCourseItem = {
-	course?: TCourses;
-	updateCourseHandler?: (course: TCourses) => void;
-};
-
-const CourseInfo = ({ course, updateCourseHandler }) => {
-	const navigate = useNavigate();
+const CourseInfo = () => {
 	const location = useLocation();
-	course = location.state;
+	const course = location.state;
 
 	return (
 		<>

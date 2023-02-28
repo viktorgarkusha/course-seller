@@ -6,7 +6,11 @@ import Input from 'src/common/Input/Input';
 
 import { TAuthor } from 'src/types/course';
 
+import { useAppDispatch, useAppSelector } from 'src/store/hooks/hooks';
+import { addAuthor } from 'src/store/slices/authorSlice';
+
 import './AuthorForm.css';
+import { selectAuthors } from 'src/store/selectors/selectors';
 
 const input = {
 	name: 'author',
@@ -22,16 +26,16 @@ export type TAuthorForm = {
 };
 
 const AuthorForm = ({ handleSaveAuthor, existAuthors, removeAuthor }) => {
-	const [authors, setAuthors] = useState<TAuthor[]>([]);
 	const [value, setValue] = useState<string>('');
+	const dispatch = useAppDispatch();
+	const authors = useAppSelector(selectAuthors);
 
 	const handleChange = (event) => {
 		setValue(event.target.value);
 	};
 
-	const addAuthor = useCallback(() => {
-		value.length &&
-			setAuthors((state) => [...state, { name: value, id: uuidv4() }]);
+	const addAuthorToTheStore = useCallback(() => {
+		value.length && dispatch(addAuthor({ name: value, id: uuidv4() }));
 		setValue('');
 	}, [value]);
 
@@ -45,7 +49,7 @@ const AuthorForm = ({ handleSaveAuthor, existAuthors, removeAuthor }) => {
 				<h2>Add author</h2>
 				<div className='controls'>
 					<Input field={input} onChangeText={handleChange} value={value} />
-					<Button text='Create author' onClick={addAuthor} />
+					<Button text='Create author' onClick={addAuthorToTheStore} />
 				</div>
 			</div>
 			<div className=''>

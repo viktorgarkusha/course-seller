@@ -8,7 +8,7 @@ import {
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import Layout from './common/Layout/Layout';
-import CourseContainer from './CourseContainer';
+import CourseContainer from './components/CourseContainer/CourseContainer';
 import ProtectedRoute from './common/ProtectedRoute/ProtectedRoute';
 import CourseForm from './components/CourseForm/CourseForm';
 import CourseInfo from './components/CourseInfo/CourseInfo';
