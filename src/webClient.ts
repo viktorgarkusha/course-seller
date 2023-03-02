@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-import { USER_INFO_KEY } from './constants';
+import { USER_TOKEN } from './constants';
 import { login } from './store/slices/userSlice';
 import { UserType } from './types/user';
 import store from './store/store';
 
 import { putValue } from './helpers/localStorageHelper';
+import { fetchUserRole } from './store/thunks/userThunk';
 
 const { dispatch } = store;
 
@@ -16,21 +17,16 @@ const courseApi = axios.create({
 courseApi.interceptors.response.use(
 	function (response) {
 		if (response.data.user) {
-			putValue(
-				USER_INFO_KEY,
-				JSON.stringify({
-					name: response.data.user.name,
-					email: response.data.user.email,
-					token: response.data.result,
-				})
-			);
+			putValue(USER_TOKEN, JSON.stringify(response.data.result));
 			const item: UserType = {
 				isAuth: true,
 				name: response.data.user.name,
 				email: response.data.user.email,
 				token: response.data.result,
+				role: '',
 			};
 			dispatch(login(item));
+			dispatch(fetchUserRole());
 		}
 		return response;
 	},

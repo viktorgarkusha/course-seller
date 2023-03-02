@@ -6,7 +6,7 @@ import Search from '../Search/Search';
 
 import { TCourses } from '../../types/course';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
-import { updateCourse } from '../../store/slices/courseSlice';
+import { updateCourse } from '../../store/thunks/coursesThunk';
 import { selectUser, selectCourses } from '../../store/selectors/selectors';
 
 function CourseContainer() {

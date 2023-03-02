@@ -7,7 +7,7 @@ import Input from 'src/common/Input/Input';
 import { TAuthor } from 'src/types/course';
 
 import { useAppDispatch, useAppSelector } from 'src/store/hooks/hooks';
-import { addAuthor } from 'src/store/slices/authorSlice';
+import { addAuthor } from 'src/store/thunks/authorsThunk';
 
 import './AuthorForm.css';
 import { selectAuthors } from 'src/store/selectors/selectors';

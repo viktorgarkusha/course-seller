@@ -9,10 +9,10 @@ import Input from '../../common/Input/Input';
 import AuthorForm from './components/AuthorsForm';
 
 import { createFormFields } from '../../constants';
-import { addCourse } from '../../store/slices/courseSlice';
 import { useAppDispatch } from 'src/store/hooks/hooks';
 
 import './CourseForm.css';
+import { addCourse } from 'src/store/thunks/coursesThunk';
 
 const CourseForm = () => {
 	const navigate = useNavigate();
@@ -52,12 +52,11 @@ const CourseForm = () => {
 				id: v4(),
 				title: inputs.title,
 				description: inputs.description,
-				duration: inputs.duration,
+				duration: parseInt(inputs.duration.toString()),
 				authors: inputs.authors,
 				creationDate: new Date().toDateString(),
 			})
-		);
-		navigate('/courses');
+		).then(() => navigate('/courses'));
 	};
 
 	return (
