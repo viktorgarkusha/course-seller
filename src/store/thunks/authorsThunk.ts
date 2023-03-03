@@ -5,6 +5,7 @@ import courseApi from 'src/webClient';
 
 import { USER_TOKEN } from '../../constants';
 import { getValue } from '../../helpers/localStorageHelper';
+import { SaveAuthorType } from '../types/saveAuthorType';
 
 export const fetchAllAuthors = createAsyncThunk(
 	'authors/fetchAllAuthors',
@@ -16,11 +17,11 @@ export const fetchAllAuthors = createAsyncThunk(
 
 export const addAuthor = createAsyncThunk(
 	'authors/addAuthor',
-	async (author: TAuthor) => {
+	async (author: SaveAuthorType) => {
 		const token = JSON.parse(getValue(USER_TOKEN));
 		const response = await courseApi.post(
 			'/authors/add',
-			{ name: 'VikTOR' },
+			JSON.stringify(author),
 			{
 				headers: {
 					Authorization: token,

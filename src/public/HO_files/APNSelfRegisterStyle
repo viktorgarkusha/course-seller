@@ -1,0 +1,347 @@
+@media screen and (max-width: 480px) and (orientation: landscape) {
+    .body {
+        min-width: 320px;
+    }
+
+    .small-hide {
+        display: none !important;
+    }
+
+    .register-col{
+        width: 100%;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 480px) and (orientation: portrait) {
+    .body {
+        min-width: 320px;
+    }
+
+    .small-hide {
+        display: none !important;
+    }
+
+    .register-col{
+        width: 100%;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 480px) and (orientation: landscape) {
+    .body {
+        min-width: 480px;
+    }
+
+    .small-hide {
+        display: none !important;
+    }
+
+    .register-col{
+        width: 100%;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 480px) and (orientation: portrait) {
+    .body {
+        min-width: 480px;
+    }
+
+    .small-hide {
+        display: none !important;
+    }
+
+    .register-col{
+        width: 100%;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px) and (orientation: landscape) {
+    .body {
+        min-width: 845px;
+    }
+
+    .register-col{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px) and (orientation: portrait) {
+    .body {
+        min-width: 845px;
+    }
+
+    .register-col{
+        width: 100%;
+    }  
+}
+
+@media screen and (min-width: 1024px) and (orientation: landscape) {
+    .body {
+        min-width: 1100px;
+    }
+
+    .register-col{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1280px) and (orientation: portrait) {
+    .body {
+        min-width: 1100px;
+    }
+
+    .register-col{
+        width: 100%;
+    }
+}
+
+.slds-scope{
+    color: #000000;
+}
+
+.body{
+    width: 99%;
+    max-width: 1280px;
+    padding: 0 0 0 0;
+    color: #000000;
+}
+
+.register-page{
+    width: 100%;
+    max-width: 1280px;
+    margin: auto;
+}
+
+.register-ember{
+    font-family: "AmazonEmberLite" !important;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: 000000;
+}
+
+.register-orange{
+    color: #FF9902;
+    padding-bottom: 0.2rem;;
+}
+
+.slds-scope .slds-radio [type=radio]:checked+.slds-radio_faux:after,.slds-scope .slds-radio [type=radio]:checked+.slds-radio--faux:after,.slds-scope .slds-radio [type=radio]:checked~.slds-radio_faux:after,.slds-scope .slds-radio [type=radio]:checked~.slds-radio--faux:after,.slds-scope .slds-radio [type=radio]:checked+.slds-radio__label .slds-radio_faux:after,.slds-scope .slds-radio [type=radio]:checked+.slds-radio__label .slds-radio--faux:after {
+    background: #1166bc !important;
+    background-color: #1166bc !important;
+}
+
+.slds-scope .slds-input {
+    padding: 5 0 0 0;
+}
+
+.slds-scope .slds-form-element_compound .slds-form-element{
+    padding: 0 0 0 0;
+}
+
+.slds-hide-error > .slds-form-element__help {
+    display: none !important;
+}
+
+.slds-form-element > .slds-form-element__label {
+    font-size: 1.1em;
+}
+
+.slds-scope .slds-form-element__label {
+    font-size: 1.1em;
+}
+
+.slds-scope .slds-form-element_compound .slds-form-element__row {
+    margin-left: 0;
+    margin-right: 0;
+}
+.slds-scope .slds-card{
+    box-shadow: 0 0 0 0;
+}
+.register-bolder{
+    font-weight: 500 !important;
+    padding-bottom:0.2rem;
+    font-size:0.8rem !important;
+}
+
+.register-bolderer{
+    font-weight: 500 !important;
+}
+
+.register-bold{
+    font-weight: 300 !important;
+    font-size: 1.5rem !important;
+}
+
+.register-body{
+    color: dimgrey !important;
+    line-height: 1rem;
+}
+
+.register-box{
+    background-color: #eaeded;
+    border-width: 0.2rem 0rem 0.2rem 0rem !important;
+    border-bottom-color: #AAB7B9 !important;
+    border-top-color: #AAB7B9 !important;
+}
+
+.register-item{
+    background-color: white;
+    padding:0.25rem 0.75rem 0.25rem 0.75rem !important;
+}
+
+.registerComponent-info{
+    font-family: "Amazon Ember";
+    font-size: 1.1em;
+    font-weight: 300;
+}
+.registerComponent-info_italic{
+    font-family: "AmazonEmberLite";
+    font-size: 0.9em;
+    font-weight: 300;
+    font-style: italic;
+}
+.registerComponent-heading{
+    font-family: "Amazon Ember";
+    font-size: 2em;
+    font-weight: 400;
+    padding-bottom: 0.5em;
+}
+.registerComponent-subheading{
+    font-family: "Amazon Ember";
+    font-size: 1.5em;
+    font-weight: 400;
+    padding-bottom: 0.5em;
+}
+.register-button {
+    background: linear-gradient(to bottom, #348fea 0%, #1166bc 100%) repeat scroll 0% 0% transparent !important;
+    border-color: #3359d4 #3359d4 #3359d4 !important;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-image: none;
+    border-radius: 3px;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6) inset;
+    color: rgb(255, 255, 255) !important;
+    cursor: pointer;
+    font-family: "Amazon Ember,HelveticaNeue","Helvetica",Helvetica,Arial,sans-serif;
+    font-size: 2.5em;
+    font-weight: bolder;
+    text-align: center;
+    text-decoration: none !important;
+}
+.register-button-white {
+    background: linear-gradient(to bottom, #ffffff 0%, #f7f7f7 100%) repeat scroll 0% 0% transparent !important;
+    border-color: #505050 !important;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-image: none;
+    border-radius: 3px;
+    box-shadow: none;
+    color: #505050 !important;
+    cursor: pointer;
+    font-family: "Amazon Ember,HelveticaNeue","Helvetica",Helvetica,Arial,sans-serif;
+    font-size: 2.5em;
+    font-weight: bolder;
+    text-align: center;
+    text-decoration: none !important;
+}
+.register-button-outline {
+    background: none !important;
+    border-color: none !important;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-image: none;
+    border-radius: 3px;
+    box-shadow: none;
+    color: #505050 !important;
+    cursor: pointer;
+    font-family: "Amazon Ember,HelveticaNeue","Helvetica",Helvetica,Arial,sans-serif;
+    font-size: 2.5em;
+    font-weight: bolder;
+    text-align: center;
+    text-decoration: none !important;
+}
+.register-button-disable {
+    background: linear-gradient(to bottom, #727991 0%, #404146 100%) repeat scroll 0% 0% transparent !important;
+    border-color: #afb2bb #afb2bb #afb2bb !important;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-image: none;
+    border-radius: 3px;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6) inset;
+    color: rgb(255, 255, 255) !important;
+    cursor: pointer;
+    font-family: "Amazon Ember,HelveticaNeue","Helvetica",Helvetica,Arial,sans-serif;
+    font-size: 2.5em;
+    font-weight: bolder;
+    text-align: center;
+    text-decoration: none !important;
+}
+.progress-current-title{
+    font-weight: 300 !important;
+    font-size: 0.9rem !important;
+}
+.progress-notcomplete-title{
+    font-weight: 300 !important;
+    font-size: 0.9rem !important;
+    color: grey;
+}
+.progress-complete-title{
+    font-weight: 400 !important;
+    font-size: 0.9rem !important;
+}
+.progress-complete-title::before {
+    color:orange;
+    content: "✔" ;
+}
+.progress-current-step{
+    font-weight: 400 !important;
+}
+.progress-notcomplete-step{
+    color: grey;
+}
+.progress-complete-step{
+    color: #0070D2;
+}
+.progress-complete-step::before {
+    color:orange;
+    content: "✔" ;
+}
+.percent-input::after{
+    font-weight: 400 !important;
+    padding-left: 0.1rem;
+    content: "%" ;
+}
+.percent-input > .slds-input {
+    width: 95%;
+}
+.slds-scope .slds-input:focus {
+    border-color: #FF9902 !important; 
+}
+.slds-scope .slds-button:focus {
+    border-color: #FF9902!important; 
+    border-radius: 6px;
+}
+.pass-guide-title{
+    color:orange;
+}
+.pass-guide-item::before{
+    content: "  ";
+}
+.pass-guide-check::before{
+    color:orange;
+    content: "✔";
+}
+.pass-code-support{
+    font-style: italic;
+}

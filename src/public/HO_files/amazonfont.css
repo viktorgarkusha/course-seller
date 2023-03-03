@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'AmazonEmberBold';
+  src: url('AmazonEmber_Bd.ttf?orgId=00DE0000000c48t&orgId=00DQ000000EeXyE') format('truetype');
+}
+
+@font-face {
+  font-family: 'AmazonEmberBoldItalic';
+  src: url('AmazonEmber_BdIt.ttf?orgId=00DE0000000c48t&orgId=00DQ000000EeXyE') format('truetype');
+}
+
+@font-face {
+  font-family: 'AmazonEmberLite';
+  src: url('AmazonEmber_Lt.ttf?orgId=00DE0000000c48t&orgId=00DQ000000EeXyE') format('truetype');
+}
+
+@font-face {
+  font-family: 'AmazonEmberLiteItalic';
+  src: url('AmazonEmber_LtIt.ttf?orgId=00DE0000000c48t&orgId=00DQ000000EeXyE') format('truetype');
+}
+
+@font-face {
+  font-family: 'AmazonEmberRegular';
+  src: url('AmazonEmber_Rg.ttf?orgId=00DE0000000c48t&orgId=00DQ000000EeXyE') format('truetype');
+}
+
+@font-face {
+  font-family: 'AmazonEmberRegularItalic';
+  src: url('AmazonEmber_RgIt.ttf?orgId=00DE0000000c48t&orgId=00DQ000000EeXyE') format('truetype');
+}
+
+@font-face {
+  font-family: 'AmazonEmberThin';
+  src: url('AmazonEmber_Th.ttf?orgId=00DE0000000c48t&orgId=00DQ000000EeXyE') format('truetype');
+}
+
+@font-face {
+  font-family: 'AmazonEmberThinItalic';
+  src: url('AmazonEmber_ThIt.ttf?orgId=00DE0000000c48t&orgId=00DQ000000EeXyE') format('truetype');
+}
+
+* {
+  font-family: 'AmazonEmberRegular';
+}

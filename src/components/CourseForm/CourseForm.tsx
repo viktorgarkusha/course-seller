@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { v4 } from 'uuid';
 
 import { TAuthor, TCourses } from 'src/types/course';
@@ -17,14 +17,19 @@ import { addCourse } from 'src/store/thunks/coursesThunk';
 const CourseForm = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
-	const [inputs, setInputs] = useState<TCourses>({
-		id: '',
-		title: '',
-		description: '',
-		duration: 1,
-		authors: [],
-		creationDate: new Date().toDateString(),
-	});
+	const location = useLocation();
+	const [inputs, setInputs] = useState<TCourses>(
+		location.state
+			? location.state
+			: {
+					id: '',
+					title: '',
+					description: '',
+					duration: 1,
+					authors: [],
+					creationDate: new Date().toDateString(),
+			  }
+	);
 	const handleChangeText = (event) => {
 		const name = event.target.name;
 		const value = event.target.value;
@@ -49,11 +54,10 @@ const CourseForm = () => {
 	const saveCourse = () => {
 		dispatch(
 			addCourse({
-				id: v4(),
 				title: inputs.title,
 				description: inputs.description,
 				duration: parseInt(inputs.duration.toString()),
-				authors: inputs.authors,
+				authors: inputs.authors.map((a) => a.id),
 				creationDate: new Date().toDateString(),
 			})
 		).then(() => navigate('/courses'));

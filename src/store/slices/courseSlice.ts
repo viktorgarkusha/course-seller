@@ -35,7 +35,6 @@ export const courseSlice = createSlice({
 				state.courses = action.payload;
 			})
 			.addCase(addCourse.fulfilled, (state, action) => {
-				console.log(action);
 				state.courses.push(action.payload);
 			})
 			.addCase(updateCourse.fulfilled, (state, action) => {

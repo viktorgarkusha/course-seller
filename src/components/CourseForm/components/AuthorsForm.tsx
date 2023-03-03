@@ -35,7 +35,7 @@ const AuthorForm = ({ handleSaveAuthor, existAuthors, removeAuthor }) => {
 	};
 
 	const addAuthorToTheStore = useCallback(() => {
-		value.length && dispatch(addAuthor({ name: value, id: uuidv4() }));
+		value.length && dispatch(addAuthor({ name: value }));
 		setValue('');
 	}, [value]);
 

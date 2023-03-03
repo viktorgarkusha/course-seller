@@ -27,7 +27,8 @@ const CourseItem = ({ course, updateCourseHandler }) => {
 		navigate(course.id, { state: course });
 	};
 	const editCourse = () => {
-		//dispath()
+		console.log(`update/${course.id}`);
+		navigate(`update/${course.id}`, { state: course });
 	};
 	const removeCourse = () => {
 		dispatch(deleteCourse(course.id));
