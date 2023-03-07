@@ -15,10 +15,9 @@ import { selectUser } from 'src/store/selectors/selectors';
 
 export type TCourseItem = {
 	course: TCourses;
-	updateCourseHandler: (course: TCourses) => void;
 };
 
-const CourseItem = ({ course, updateCourseHandler }) => {
+const CourseItem = ({ course }) => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const user = useAppSelector(selectUser);
@@ -27,7 +26,6 @@ const CourseItem = ({ course, updateCourseHandler }) => {
 		navigate(course.id, { state: course });
 	};
 	const editCourse = () => {
-		console.log(`update/${course.id}`);
 		navigate(`update/${course.id}`, { state: course });
 	};
 	const removeCourse = () => {

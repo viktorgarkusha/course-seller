@@ -9,7 +9,7 @@ import { IAppDispatch } from '../store';
 
 export const fetchUserRole = createAsyncThunk<
 	UserType,
-	any,
+	void,
 	{ dispatch: IAppDispatch; state: IRootState }
 >(
 	'users/fetchUserRole',
@@ -25,7 +25,7 @@ export const fetchUserRole = createAsyncThunk<
 	{
 		condition: (arg, { getState }) => {
 			const { user } = getState();
-			if (user.user.isAuth) {
+			if (user.user.role) {
 				return false;
 			}
 			return true;

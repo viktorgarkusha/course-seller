@@ -1,4 +1,4 @@
-export type CourseType = {
+export type AddCourseType = {
 	title: string;
 	description: string;
 	creationDate: string;

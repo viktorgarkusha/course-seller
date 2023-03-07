@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { v4 } from 'uuid';
 
 import { TAuthor, TCourses } from 'src/types/course';
 
@@ -12,7 +11,7 @@ import { createFormFields } from '../../constants';
 import { useAppDispatch } from 'src/store/hooks/hooks';
 
 import './CourseForm.css';
-import { addCourse } from 'src/store/thunks/coursesThunk';
+import { addCourse, updateCourse } from 'src/store/thunks/coursesThunk';
 
 const CourseForm = () => {
 	const navigate = useNavigate();
@@ -63,6 +62,19 @@ const CourseForm = () => {
 		).then(() => navigate('/courses'));
 	};
 
+	const editCourse = () => {
+		dispatch(
+			updateCourse({
+				id: inputs.id,
+				title: inputs.title,
+				description: inputs.description,
+				duration: parseInt(inputs.duration.toString()),
+				authors: inputs.authors.map((a) => a.id),
+				creationDate: new Date().toDateString(),
+			})
+		).then(() => navigate('/courses'));
+	};
+
 	return (
 		<div className='formWrapper'>
 			<form className='formContainer'>
@@ -87,7 +99,12 @@ const CourseForm = () => {
 					existAuthors={inputs.authors}
 				/>
 				<div className='btn-block'>
-					<Button text='Add Course' onClick={saveCourse} />
+					{location.state ? (
+						<Button text='Edit Course' onClick={editCourse} />
+					) : (
+						<Button text='Add Course' onClick={saveCourse} />
+					)}
+					{/* <Button text='Add Course' onClick={saveCourse} /> */}
 					<Button text='Cancel' onClick={() => navigate('/courses')} />
 				</div>
 			</form>

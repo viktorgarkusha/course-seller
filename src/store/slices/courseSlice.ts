@@ -1,4 +1,4 @@
-import { createSlice, CaseReducer, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import { TCourses } from '../../types/course';
 import {
@@ -17,18 +17,7 @@ const initialState: CourseInitialStateType = { courses: [] };
 export const courseSlice = createSlice({
 	name: 'courses',
 	initialState,
-	reducers: {
-		// addCourse: (state, action) => {
-		// 	state.courses.push(action.payload);
-		// },
-		// deleteCourse: (state, action) => {
-		// 	state.courses = state.courses.filter((c) => c.id !== action.payload);
-		// },
-		// updateCourse: (state, action) => {
-		// 	const index = state.courses.findIndex((c) => c.id === action.payload.id);
-		// 	state.courses[index] = action.payload;
-		// },
-	},
+	reducers: {},
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchAllCourses.fulfilled, (state, action) => {

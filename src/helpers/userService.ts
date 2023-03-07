@@ -7,6 +7,6 @@ export const useUpdateUserInStore = async () => {
 	const dispatch = useAppDispatch();
 	const token = JSON.parse(getValue(USER_TOKEN));
 	if (token) {
-		await dispatch(fetchUserRole({}));
+		await dispatch(fetchUserRole());
 	}
 };

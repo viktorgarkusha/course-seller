@@ -26,7 +26,7 @@ courseApi.interceptors.response.use(
 				role: '',
 			};
 			dispatch(login(item));
-			dispatch(fetchUserRole({}));
+			dispatch(fetchUserRole());
 		}
 		return response;
 	},

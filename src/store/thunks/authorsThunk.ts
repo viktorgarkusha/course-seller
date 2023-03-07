@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { TAuthor } from 'src/types/course';
 
 import courseApi from 'src/webClient';
 

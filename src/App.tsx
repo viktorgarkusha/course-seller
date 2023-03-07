@@ -10,12 +10,10 @@ import { fetchAllAuthors } from './store/thunks/authorsThunk';
 function App() {
 	const dispatch = useAppDispatch();
 	const isAuth = useAppSelector(isUserAuthentificated);
-	console.log('IN APP');
 	useEffect(() => {
 		if (isAuth) {
-			console.log('IN APP EFFWCT');
-			dispatch(fetchAllCourses());
 			dispatch(fetchAllAuthors());
+			dispatch(fetchAllCourses());
 		}
 	}, [dispatch, isAuth]);
 	return <RouterProvider router={router} />;
