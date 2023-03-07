@@ -12,8 +12,7 @@ function App() {
 	const isAuth = useAppSelector(isUserAuthentificated);
 	useEffect(() => {
 		if (isAuth) {
-			dispatch(fetchAllAuthors());
-			dispatch(fetchAllCourses());
+			dispatch(fetchAllAuthors()).then(() => dispatch(fetchAllCourses()));
 		}
 	}, [dispatch, isAuth]);
 	return <RouterProvider router={router} />;

@@ -3,5 +3,5 @@ export type UserType = {
 	email: string;
 	token: string;
 	isAuth: boolean;
-	role: string;
+	role?: string;
 };

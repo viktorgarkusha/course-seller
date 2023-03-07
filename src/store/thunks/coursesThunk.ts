@@ -2,8 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { TCourses } from 'src/types/course';
 
 import courseApi from 'src/webClient';
-import { USER_TOKEN } from '../../constants';
-import { getValue } from '../../helpers/localStorageHelper';
 import { AddCourseType } from '../types/AddCourseType';
 import { EditCourseType } from '../types/EditCourseType';
 import { IRootState } from '../rootReducer';
@@ -30,16 +28,7 @@ export const addCourse = createAsyncThunk<
 	AddCourseType,
 	{ dispatch: IAppDispatch; state: IRootState }
 >('courses/addCourse', async (course, { getState }) => {
-	const token = JSON.parse(getValue(USER_TOKEN));
-	const response = await courseApi.post(
-		'/courses/add',
-		JSON.stringify(course),
-		{
-			headers: {
-				Authorization: token,
-			},
-		}
-	);
+	const response = await courseApi.post('/courses/add');
 	const { authors } = getState();
 	return {
 		...response.data.result,
@@ -54,16 +43,7 @@ export const updateCourse = createAsyncThunk<
 	EditCourseType,
 	{ dispatch: IAppDispatch; state: IRootState }
 >('courses/updateCourse', async (course, { getState }) => {
-	const token = JSON.parse(getValue(USER_TOKEN));
-	const response = await courseApi.put(
-		`/courses/${course.id}`,
-		JSON.stringify(course),
-		{
-			headers: {
-				Authorization: token,
-			},
-		}
-	);
+	const response = await courseApi.put(`/courses/${course.id}`);
 	const { authors } = getState();
 	return {
 		...response.data.result,
@@ -76,12 +56,7 @@ export const updateCourse = createAsyncThunk<
 export const deleteCourse = createAsyncThunk(
 	'courses/deleteCourse',
 	async (id: string) => {
-		const token = JSON.parse(getValue(USER_TOKEN));
-		await courseApi.delete(`/courses/${id}`, {
-			headers: {
-				Authorization: token,
-			},
-		});
+		await courseApi.delete(`/courses/${id}`);
 		return id;
 	}
 );
