@@ -9,20 +9,24 @@ import { getDurationString } from '../../../../helpers/getDuration';
 import { useNavigate } from 'react-router-dom';
 import deleteButton from '../../../../public/delete-button.svg';
 import editButton from '../../../../public/edit-pencil-write.svg';
-import { useAppDispatch } from 'src/store/hooks/hooks';
-import { deleteCourse } from 'src/store/slices/courseSlice';
+import { useAppDispatch, useAppSelector } from 'src/store/hooks/hooks';
+import { deleteCourse } from 'src/store/thunks/coursesThunk';
+import { selectUser } from 'src/store/selectors/selectors';
 
 export type TCourseItem = {
 	course: TCourses;
-	updateCourseHandler: (course: TCourses) => void;
 };
 
-const CourseItem = ({ course, updateCourseHandler }) => {
+const CourseItem = ({ course }) => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
+	const user = useAppSelector(selectUser);
 
 	const showCourse = () => {
 		navigate(course.id, { state: course });
+	};
+	const editCourse = () => {
+		navigate(`update/${course.id}`, { state: course });
 	};
 	const removeCourse = () => {
 		dispatch(deleteCourse(course.id));
@@ -49,18 +53,22 @@ const CourseItem = ({ course, updateCourseHandler }) => {
 					</p>
 					<div className='buttonBlock'>
 						<Button text='Show course' onClick={showCourse} />
-						<input
-							className='imageButton'
-							type='image'
-							src={editButton}
-							onClick={updateCourseHandler}
-						/>
-						<input
-							className='imageButton'
-							type='image'
-							src={deleteButton}
-							onClick={removeCourse}
-						/>
+						{user.role === 'admin' && (
+							<>
+								<input
+									className='imageButton'
+									type='image'
+									src={editButton}
+									onClick={editCourse}
+								/>
+								<input
+									className='imageButton'
+									type='image'
+									src={deleteButton}
+									onClick={removeCourse}
+								/>
+							</>
+						)}
 					</div>
 				</div>
 			</div>

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-import courseApi from '../../webClient';
-
 import '../../common/css/Common.css';
 import { TInputField } from 'src/types/inputField';
 import Input from 'src/common/Input/Input';
@@ -51,17 +49,9 @@ const Registration = () => {
 
 	const createUser = (event) => {
 		event.preventDefault();
-		register(data).then(function () {
+		register(data).then(() => {
 			navigate('/login');
 		});
-		// courseApi
-		// 	.post('/register', JSON.stringify(data))
-		// 	.then(function () {
-		// 		navigate('/login');
-		// 	})
-		// 	.catch(function (error) {
-		// 		// TODO add hanfler
-		// 	});
 	};
 
 	return (
@@ -74,6 +64,7 @@ const Registration = () => {
 					{fields.map((field) => {
 						return (
 							<Input
+								key={field.name}
 								value={data[field.name]}
 								field={field}
 								onChangeText={handleUpdate}

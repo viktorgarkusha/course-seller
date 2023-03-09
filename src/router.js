@@ -10,6 +10,7 @@ import Registration from './components/Registration/Registration';
 import Layout from './common/Layout/Layout';
 import CourseContainer from './components/CourseContainer/CourseContainer';
 import ProtectedRoute from './common/ProtectedRoute/ProtectedRoute';
+import AdminRoute from './common/ProtectedRoute/AdminRoute';
 import CourseForm from './components/CourseForm/CourseForm';
 import CourseInfo from './components/CourseInfo/CourseInfo';
 
@@ -21,8 +22,11 @@ const router = createBrowserRouter(
 			<Route path='registration' element={<Registration />} />
 			<Route element={<ProtectedRoute />}>
 				<Route path='courses' element={<CourseContainer />} />
-				<Route path='courses/add' element={<CourseForm />} />
 				<Route path='courses/:courseId' element={<CourseInfo />} />
+				<Route element={<AdminRoute />}>
+					<Route path='courses/add' element={<CourseForm />} />
+					<Route path='courses/update/:courseId' element={<CourseForm />} />
+				</Route>
 			</Route>
 		</Route>
 	)

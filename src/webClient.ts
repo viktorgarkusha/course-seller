@@ -1,13 +1,8 @@
 import axios from 'axios';
 
-import { USER_INFO_KEY } from './constants';
-import { login } from './store/slices/userSlice';
-import { UserType } from './types/user';
-import store from './store/store';
+import { USER_TOKEN } from './constants';
 
-import { putValue } from './helpers/localStorageHelper';
-
-const { dispatch } = store;
+import { getValue, putValue } from './helpers/localStorageHelper';
 
 const courseApi = axios.create({
 	baseURL: 'http://localhost:4000/',
@@ -16,21 +11,7 @@ const courseApi = axios.create({
 courseApi.interceptors.response.use(
 	function (response) {
 		if (response.data.user) {
-			putValue(
-				USER_INFO_KEY,
-				JSON.stringify({
-					name: response.data.user.name,
-					email: response.data.user.email,
-					token: response.data.result,
-				})
-			);
-			const item: UserType = {
-				isAuth: true,
-				name: response.data.user.name,
-				email: response.data.user.email,
-				token: response.data.result,
-			};
-			dispatch(login(item));
+			putValue(USER_TOKEN, JSON.stringify(response.data.result));
 		}
 		return response;
 	},
@@ -38,5 +19,9 @@ courseApi.interceptors.response.use(
 		return Promise.reject(error);
 	}
 );
+courseApi.interceptors.request.use(function (config) {
+	config.headers.Authorization = JSON.parse(getValue(USER_TOKEN));
+	return config;
+});
 
 export default courseApi;

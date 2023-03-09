@@ -3,19 +3,18 @@ import { RouterProvider } from 'react-router-dom';
 
 import router from './router';
 import { useAppDispatch, useAppSelector } from './store/hooks/hooks';
-import { selectUser } from './store/selectors/selectors';
+import { isUserAuthentificated } from './store/selectors/selectors';
 import { fetchAllCourses } from './store/thunks/coursesThunk';
 import { fetchAllAuthors } from './store/thunks/authorsThunk';
 
 function App() {
 	const dispatch = useAppDispatch();
-	const user = useAppSelector(selectUser);
+	const isAuth = useAppSelector(isUserAuthentificated);
 	useEffect(() => {
-		if (user.isAuth) {
-			dispatch(fetchAllCourses());
-			dispatch(fetchAllAuthors());
+		if (isAuth) {
+			dispatch(fetchAllAuthors()).then(() => dispatch(fetchAllCourses()));
 		}
-	}, [dispatch, user.isAuth]);
+	}, [dispatch, isAuth]);
 	return <RouterProvider router={router} />;
 }
 

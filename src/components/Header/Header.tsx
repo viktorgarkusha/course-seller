@@ -3,12 +3,11 @@ import React from 'react';
 import Logo from './components/Logo/Logo';
 import Button from 'src/common/Button/Button';
 import { useNavigate } from 'react-router-dom';
-import { IRootState } from '../../store/rootReducer';
 
-import { logout } from 'src/store/slices/userSlice';
+import { logout } from 'src/store/thunks/userThunk';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks/hooks';
 import { removeValue } from 'src/helpers/localStorageHelper';
-import { USER_INFO_KEY } from 'src/constants';
+import { USER_TOKEN } from 'src/constants';
 import { selectUser } from 'src/store/selectors/selectors';
 
 import './Header.css';
@@ -18,9 +17,9 @@ function Header() {
 	const dispatch = useAppDispatch();
 	const userInfo = useAppSelector(selectUser);
 
-	const logoutUser = () => {
-		removeValue(USER_INFO_KEY);
-		dispatch(logout({}));
+	const logoutUser = async () => {
+		await dispatch(logout());
+		removeValue(USER_TOKEN);
 		navigate('/login');
 	};
 	return (

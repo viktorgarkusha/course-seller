@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 import Button from 'src/common/Button/Button';
 import Input from 'src/common/Input/Input';
@@ -7,7 +6,7 @@ import Input from 'src/common/Input/Input';
 import { TAuthor } from 'src/types/course';
 
 import { useAppDispatch, useAppSelector } from 'src/store/hooks/hooks';
-import { addAuthor } from 'src/store/slices/authorSlice';
+import { addAuthor } from 'src/store/thunks/authorsThunk';
 
 import './AuthorForm.css';
 import { selectAuthors } from 'src/store/selectors/selectors';
@@ -35,7 +34,7 @@ const AuthorForm = ({ handleSaveAuthor, existAuthors, removeAuthor }) => {
 	};
 
 	const addAuthorToTheStore = useCallback(() => {
-		value.length && dispatch(addAuthor({ name: value, id: uuidv4() }));
+		value.length && dispatch(addAuthor({ name: value }));
 		setValue('');
 	}, [value]);
 

@@ -61,11 +61,11 @@ export const createFormFields: TCreateForm[] = [
 		name: 'duration',
 		label: 'Duration',
 		type: 'text',
-		placeHolder: '5h',
+		placeHolder: '',
 	},
 ];
 
-const USER_INFO_KEY = 'userInfo';
+const USER_TOKEN = 'token';
 const COURSES_KEY = 'courses';
 
-export { USER_INFO_KEY, COURSES_KEY };
+export { USER_TOKEN, COURSES_KEY };

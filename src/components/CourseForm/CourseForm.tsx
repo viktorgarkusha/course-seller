@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { v4 } from 'uuid';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import { TAuthor, TCourses } from 'src/types/course';
 
@@ -9,22 +8,27 @@ import Input from '../../common/Input/Input';
 import AuthorForm from './components/AuthorsForm';
 
 import { createFormFields } from '../../constants';
-import { addCourse } from '../../store/slices/courseSlice';
 import { useAppDispatch } from 'src/store/hooks/hooks';
 
 import './CourseForm.css';
+import { addCourse, updateCourse } from 'src/store/thunks/coursesThunk';
 
 const CourseForm = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
-	const [inputs, setInputs] = useState<TCourses>({
-		id: '',
-		title: '',
-		description: '',
-		duration: 1,
-		authors: [],
-		creationDate: new Date().toDateString(),
-	});
+	const location = useLocation();
+	const [inputs, setInputs] = useState<TCourses>(
+		location.state
+			? location.state
+			: {
+					id: '',
+					title: '',
+					description: '',
+					duration: 1,
+					authors: [],
+					creationDate: new Date().toDateString(),
+			  }
+	);
 	const handleChangeText = (event) => {
 		const name = event.target.name;
 		const value = event.target.value;
@@ -49,15 +53,26 @@ const CourseForm = () => {
 	const saveCourse = () => {
 		dispatch(
 			addCourse({
-				id: v4(),
 				title: inputs.title,
 				description: inputs.description,
-				duration: inputs.duration,
-				authors: inputs.authors,
+				duration: parseInt(inputs.duration.toString()),
+				authors: inputs.authors.map((a) => a.id),
 				creationDate: new Date().toDateString(),
 			})
-		);
-		navigate('/courses');
+		).then(() => navigate('/courses'));
+	};
+
+	const editCourse = () => {
+		dispatch(
+			updateCourse({
+				id: inputs.id,
+				title: inputs.title,
+				description: inputs.description,
+				duration: parseInt(inputs.duration.toString()),
+				authors: inputs.authors.map((a) => a.id),
+				creationDate: new Date().toDateString(),
+			})
+		).then(() => navigate('/courses'));
 	};
 
 	return (
@@ -84,7 +99,12 @@ const CourseForm = () => {
 					existAuthors={inputs.authors}
 				/>
 				<div className='btn-block'>
-					<Button text='Add Course' onClick={saveCourse} />
+					{location.state ? (
+						<Button text='Edit Course' onClick={editCourse} />
+					) : (
+						<Button text='Add Course' onClick={saveCourse} />
+					)}
+					{/* <Button text='Add Course' onClick={saveCourse} /> */}
 					<Button text='Cancel' onClick={() => navigate('/courses')} />
 				</div>
 			</form>

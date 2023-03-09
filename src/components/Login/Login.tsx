@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import { TUserRequest } from '../Registration/Registration';
-import courseApi from '../../webClient';
 
 import Input from 'src/common/Input/Input';
 import { TInputField } from 'src/types/inputField';
 
 import '../../common/css/Common.css';
 import { login } from 'src/services';
+import { useAppSelector } from 'src/store/hooks/hooks';
+import { selectUser } from 'src/store/selectors/selectors';
 
 const fields: TInputField[] = [
 	{
@@ -27,6 +28,12 @@ const fields: TInputField[] = [
 
 const Login = () => {
 	const navigate = useNavigate();
+	const user = useAppSelector(selectUser);
+	useEffect(() => {
+		if (user.isAuth) {
+			navigate('/courses');
+		}
+	});
 	const [data, setData] = useState<TUserRequest>({
 		name: '',
 		email: '',
@@ -56,6 +63,7 @@ const Login = () => {
 					{fields.map((field) => {
 						return (
 							<Input
+								key={field.name}
 								value={data[field.name]}
 								field={field}
 								onChangeText={handleUpdate}
