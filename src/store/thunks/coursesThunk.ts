@@ -28,7 +28,7 @@ export const addCourse = createAsyncThunk<
 	AddCourseType,
 	{ dispatch: IAppDispatch; state: IRootState }
 >('courses/addCourse', async (course, { getState }) => {
-	const response = await courseApi.post('/courses/add');
+	const response = await courseApi.post('/courses/add', JSON.stringify(course));
 	const { authors } = getState();
 	return {
 		...response.data.result,
@@ -43,7 +43,10 @@ export const updateCourse = createAsyncThunk<
 	EditCourseType,
 	{ dispatch: IAppDispatch; state: IRootState }
 >('courses/updateCourse', async (course, { getState }) => {
-	const response = await courseApi.put(`/courses/${course.id}`);
+	const response = await courseApi.put(
+		`/courses/${course.id}`,
+		JSON.stringify(course)
+	);
 	const { authors } = getState();
 	return {
 		...response.data.result,
