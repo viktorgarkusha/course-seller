@@ -28,7 +28,9 @@ export const addCourse = createAsyncThunk<
 	AddCourseType,
 	{ dispatch: IAppDispatch; state: IRootState }
 >('courses/addCourse', async (course, { getState }) => {
+	console.log('DISPATCHING!!!!');
 	const response = await courseApi.post('/courses/add', JSON.stringify(course));
+	console.log(response);
 	const { authors } = getState();
 	return {
 		...response.data.result,

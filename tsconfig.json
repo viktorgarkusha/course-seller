@@ -9,5 +9,8 @@
       "dom"
     ],
     "baseUrl": ".",
+    "paths": {
+      "test-utils": ["./utils/test-utils"]
+    }
   },
 }
