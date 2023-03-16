@@ -1,7 +1,5 @@
-import * as reactRedux from 'react-redux';
 import { render, screen } from '../../../testUtils';
-import axios from 'axios';
-import { useAppSelector, useAppDispatch } from '../../../store/hooks/hooks';
+import { useAppSelector } from '../../../store/hooks/hooks';
 
 import Header from '../Header';
 

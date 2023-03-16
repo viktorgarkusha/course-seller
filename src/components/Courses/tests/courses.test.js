@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '../../../testUtils';
+import { render, screen } from '../../../testUtils';
 import Courses from '../Courses';
 
 const courses = [
@@ -23,10 +23,9 @@ const courses = [
 		],
 	},
 ];
-describe('CourseItem', () => {
-	it('renders CourseItem component', () => {
+describe('Course', () => {
+	it('renders Course component', () => {
 		render(<Courses courses={courses} />);
-		//screen.debug();
 		expect(screen.getByTitle('courseList').children.length).toEqual(
 			courses.length
 		);

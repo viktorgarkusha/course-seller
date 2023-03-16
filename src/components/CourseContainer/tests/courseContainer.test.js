@@ -31,7 +31,7 @@ jest.mock('../../../store/hooks/hooks', () => ({
 	useAppDispatch: jest.fn(),
 }));
 
-describe('CourseItem', () => {
+describe('CourseContainer', () => {
 	const useSelectorMock = useAppSelector;
 	beforeEach(() => {
 		useSelectorMock.mockImplementation(() => {
