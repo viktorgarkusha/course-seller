@@ -11,7 +11,7 @@ type TCoursesProps = {
 
 function Courses({ courses }: TCoursesProps) {
 	return (
-		<ul className='courseList'>
+		<ul className='courseList' title='courseList'>
 			{courses.map((course) => {
 				return <CourseItem key={course.id} course={course} />;
 			})}

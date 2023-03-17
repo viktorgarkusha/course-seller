@@ -38,6 +38,4 @@ export const courseSlice = createSlice({
 	},
 });
 
-//export const { deleteCourse } = courseSlice.actions;
-
 export default courseSlice.reducer;
